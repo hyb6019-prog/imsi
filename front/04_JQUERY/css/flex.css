@@ -1,0 +1,60 @@
+.wrap{
+  background-color: antiquewhite;
+  height: 500px;
+  display: flex;
+  /*
+  display : flex; 설정하면 내부 아이템들이 메인축 방향으로 배치
+        -> 아무런 설정도 하지않으면 메인측은 왼쪽 -> 오른쪽
+        -> 메인측 방향이 결정되면 90도 방향이 서브축(보조축)으로 자동으로 결정
+  -> 메인축은 css 속성으로 변경 가능
+  flex-direction : column, row(default), colunm-reverse, row-reverse
+  */
+  flex-direction: row;
+  /*
+  flex-wrap : nowrap(default), wrap;
+      -> 내부 아이템이 flex 박스를 벗어날 때 처리
+          -> nowrap : 내부아이템의 크기를 조절해서 한줄로 배치
+          -> wrap : 내부아이템 크기를 유지하고 다음줄로 배치
+  */
+  flex-wrap: wrap; 
+
+  /*
+  justify-content : 메인축 정렬
+  center : 가운데 정렬
+  flex-start : 메인축 시작부터 축방향으로 (default)
+  flex-end : 메인축 끝부터 시작방향으로
+  space-around : 각 아이템별로 좌/우 여백이 동일
+  space-between: 첫 아이템은 flex-strad / 마지막 아이템은 flex-end / 나머지 아이템들의 간격은 모두 동일하게
+  space-evenly : 모든 간격이 동일하게
+  */
+  justify-content: center;
+  /*
+  서브축 정렬(보조축, 반대축)
+  서브축 아이템이 1줄인경우 : align-items
+  서브축 아이템이 여러줄인경우 : align-content
+  */
+  align-items: center;
+  /*gap: 20px; 간격을 margin말고 gap사용*/
+}
+.item{
+  width: 50px;
+  height: 50px;
+}
+
+/*
+  align-self : 보조축에 대해서 아이템 개인 정렬
+  flex-grow : 메인축 기준으로 공간이 남는경우 해당 아이템을 늘려서 메인축을 가득 채움
+*/
+.item1{
+  background-color: coral;
+  /* align-self: flex-start; */
+  flex-grow: 10;
+}
+.item2{
+  background-color: teal;
+  flex-grow: 1;
+}
+.item3{
+  background-color: royalblue;
+  flex-grow: 1;
+}

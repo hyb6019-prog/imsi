@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>하이퍼링크 태그</title>
+</head>
+<body>
+  <h1 id="test">하이퍼링크 태그</h1> <!-- id주면 -->
+  <hr>
+  <!-- a태그 사용 시 아무 속성도 작성하지 않으면 span이랑 다를게 없음 -->
+  <a>이게 하이퍼링크 태그</a>
+  <br>
+  <!-- a태그에 href속성을 작성하면 다른문서를 열기 가능 -->
+  <!-- <a href="클릭시 열어줄 문서 위치" target="문서가 열릴 위치 지정">현재 화면에 보여줄 문자</a> -->
+  <a href="01_글자태그.html" target="_self">글자태그로 이동</a>
+  <a href="01_글자태그.html" target="_blank">글자태그로 이동</a>
+  <br>
+  <a href="01_글자태그.html" target="_parent">글자태그로 이동</a>
+  <a href="01_글자태그.html" target="_top">글자태그로 이동</a>
+  <!--
+    target 속성을 사용하면 href에 작성된 문서가 열리는 위치 지정이 가능
+    _self : 현재 창을 변경(default)
+    _blank : 새 창을 띄워서 문서 열기
+    _parent : 부모창에서 문서 열기(부모창 : 현재 창을 열어준 창)
+    _top : 최상위 창
+  -->
+  <br>
+  <a href="02_목록태그.html">목록태그로 이동</a><!-- 상대경로 -->
+
+  <!-- a 태그로 페이지 이동을 할 때 내가 작성하지 않은 페이지로도 이동 가능(외부문서) 
+      href에 http:// , https:// 로 시작하면 외부페이지로도 이동이 가능
+  -->
+  <br>
+  <a href="http://www.naver.com">네이버로 이동</a><!-- 절대경로 -->
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <!-- 현재 문서 내 해당하는 아이디의 요소 위치로 이동 -->
+  <a href="#test">맨위로</a>
+  <br>
+  <a href="https://www.naver.com">네이버로 이동</a>
+  <br>
+  <a href="05_멀티미디어태그.html"><img src="image/test.jpg"></a>
+  
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+

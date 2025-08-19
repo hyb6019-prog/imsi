@@ -1,0 +1,50 @@
+*{
+  margin: 0;
+  padding: 0;
+  color: #1e1e1e;
+}
+.join-all-wrap{
+  background-color: #ddd;
+  padding: 80px;
+}
+.join-wrap{
+  background-color: #fff;
+  width: 800px;
+  margin: 0 auto;
+}
+.join-title{
+  margin: 0 auto;
+  text-align: center;
+}
+.join-title>h1{
+  background-color: aqua;
+  padding: 25px;
+  color: darkblue;
+}
+.join-title>h3{
+  background-color: antiquewhite;
+  padding: 15px;
+}
+.join-content{
+  width: 600px;
+  margin: 0 auto;
+  /* background-color: beige; */
+  overflow: hidden;
+}
+.id{
+  background-color: aquamarine;
+  font-size: large;
+  color: darkblue;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 15px 30px 15px 15px;
+  width: 450px;
+  float: left;
+}
+sup{
+  color: red;
+}
+.id>button{
+  float: left;
+  /* width: ; */
+}

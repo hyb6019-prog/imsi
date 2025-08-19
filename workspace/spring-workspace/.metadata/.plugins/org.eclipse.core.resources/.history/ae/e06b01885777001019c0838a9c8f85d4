@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.photo-write-wrap{
+		width: 1000px;
+		margin: 0 auto;
+		
+	}
+	.photo-write-wrap .input-item>input[type=text]{
+		padding: 0;
+		border-bottom: none;
+	}
+</style>
+</head>
+<body>
+	<th:block th:include="common/header"></th:block>
+	<main class="content">
+		<section class="section photo-write-wrap">
+			<div class="page-title">사진게시판 글쓰기</div>
+			<form action="/photo/write" method="post" enctype="multipart/form-data">
+				<table class="tbl">
+					<tr>
+						<th>제목</th>
+						<td colspan="3">
+							<div class="input-item">
+								<input type="text" name="photoTitle">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th style="width:20%;">작성자</th>
+						<td style="width:30%;">
+							<span th:text="${session.member.memberId}"></span>
+							<input type="hidden" name="photoWriter" th:value="${session.member.memberId}">
+						</td>
+						<th style="width:20%;">썸네일</th>
+						<td style="width:30%;">
+							<input type="file" name="imageFile" accept="image/*" onchange="loadIme(this);">
+						</td>
+					</tr>
+					<tr>
+						<th>이미지 미리보기</th>
+						<td colspan="3">
+							<img id="img-view" width="500px" src="/image/default_img.png">
+						</td>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td colspan="3">
+							<div class="input-item">
+								<textarea name="photoContent"></textarea>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th colspan="4">
+							<button class="btn-point lg" type="submit">등록</button>
+						</th>
+					</tr>
+				</table>
+			</form>
+		</section>
+	</main>
+	<script>
+		function loadIme(obj){
+			//매개변수로 받은 obj는 input type="file" 인 요소
+		}
+	</script>
+	<th:block th:include="common/footer"></th:block>
+</body>
+</html>

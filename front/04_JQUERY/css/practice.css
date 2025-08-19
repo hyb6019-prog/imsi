@@ -1,0 +1,19 @@
+.parent {
+    width: 300px;
+    height: 200px;
+    background-color: lightblue;
+    border: 2px solid navy;
+
+    /* 자식의 기준점이 되기 위해 선언! */
+    position: relative; 
+}
+.child {
+    width: 80px;
+    height: 80px;
+    background-color: coral;
+    
+    /* 부모를 기준으로 위치를 잡기 위해 선언! */
+    position: absolute; 
+    bottom: 10px; /* 부모의 아래쪽에서 10px 위로 */
+    right: 10px;  /* 부모의 오른쪽에서 10px 왼쪽으로 */
+}

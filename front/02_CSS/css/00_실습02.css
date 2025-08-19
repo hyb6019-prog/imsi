@@ -1,0 +1,75 @@
+.login-header{
+  width: 1200px;
+  /* background-color: bisque; */
+}
+.header-top{
+  height: 40px;
+  /* background-color: antiquewhite; */
+  overflow: hidden;
+}
+.nav{
+  height: 50px;
+  /* background-color: burlywood; */
+}
+.logo{
+  height: 40px;
+  width: 200px;
+  /* background-color: aquamarine; */
+  float: left;
+}
+.membership-link{
+  height: 40px;
+  /* background-color: coral; */
+  float: right;
+  /* text-align: right;
+  margin-top: 15px; */
+  
+  
+}
+.logo>a{
+  color: coral;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: xx-large;
+}
+.membership-link>a{
+  color: black;
+  text-decoration: none;
+  font-size: small;
+  line-height: 40px;
+  text-align: right;
+}
+.membership-link>a:hover{
+  color: coral;
+  text-decoration: underline;
+}
+.membership-link>a:last-child{
+  padding-left: 30px;
+}
+
+.nav>ul{
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  border-top: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+ul>li{
+  float: left;
+  list-style-type: none;
+  
+}
+li>a{
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  display: inline-block;
+  line-height: 50px;
+  color: black;
+  border-top: 3px solid transparent;
+  text-decoration: none;
+}
+li>a:hover{
+  border-top: 3px solid coral;
+  color: coral;
+}

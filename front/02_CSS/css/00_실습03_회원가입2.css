@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.join-all-wrap{
+    background-color: #ddd;
+    padding: 80px;
+}
+.join-wrap{
+    background-color: #fff;
+    width: 800px;
+    height: 900px;
+    margin: 0 auto;
+    border-radius: 12px;
+}
+.join-title>h1{
+    text-align: center;
+    font-weight: 1000;
+    padding: 15px;
+}
+.join-title>h3{
+    text-align: center;
+    padding: 15px;
+}
+.join-title>h1{
+    text-align: center;
+    padding: 20px;
+}
+.join-title>h3{
+    padding: 15px;
+    text-align: center
+}
+.join-content{
+    width: 500px;
+    margin: 0 auto;
+}
+
+.join-input-wrap{
+    padding: 10px 0px;
+}
+
+
+.join-input-wrap>div:first-child{
+    padding: 15px 0px;
+}
+
+.join-input-wrap>div:first-child>label{
+    color: blue;
+    font-size: 20px;
+}
+.join-input-wrap>div:first-child>label>sup{
+    color: red;
+
+}
+.join-input-wrap>div:last-child>input{
+    width: 100%;
+    border: none;
+    border-bottom: 3px solid #ccc;
+    outline: none;
+    height: 30px;
+    font-size: 18px;
+    box-sizing: border-box;
+    padding-left: 10px;
+}
+.join-input-wrap>div:last-child>input:focus{
+    border-color: #003399;
+}
+
+#id{
+    width: 400px;
+}
+
+.dup-btn{
+    width: 90px;
+    height: 30px;
+    border: none;
+    background-color: #003399;
+    color: #fff;
+    margin-left: 5px;
+}
+input[name=gender] {
+    display: none;
+}
+input[name=gender]+label{
+    display: block;
+    width: 50%;
+    color: #003399;
+    float: left;
+    border: 1px solid #003399;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 10px 0px;
+}
+input[name=gender]:checked+label{
+    background-color: #003399;
+    color: #fff;
+}
+.gender-div{
+    overflow: hidden;
+}
+#email,#email2{
+    width: 170px;
+}
+.email-choice{
+    width: 130px;
+    height: 30px;
+}

@@ -1,0 +1,17 @@
+package kr.co.iei;
+
+import org.springframework.boot.web.server.ConfigurableWebServerFactory;
+import org.springframework.boot.web.server.ErrorPage;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
+import org.springframework.http.HttpStatus;
+
+public class WebServerCustom implements WebServerFactoryCustomizer<ConfigurableWebServerFactory>{
+
+	@Override
+	public void customize(ConfigurableWebServerFactory factory) {
+		//404
+		ErrorPage error404 = new ErrorPage(HttpStatus.NOT_FOUND, "/error/notFound"); //(에러종류, 이쪽으로 이동)
+		
+	}
+
+}

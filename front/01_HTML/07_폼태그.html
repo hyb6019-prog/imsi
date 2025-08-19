@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>폼태그</title>
+</head>
+<body>
+  <!-- 유저에게 값을 입력받는 태그 -->
+  <input>
+  <hr>
+  <!--
+      입력받은 값을 전송하는 역할의 태그 -> form
+      form 태그의 속성 action : 전송하는 데이터를 받을 페이지(프로그램)
+      form 태그의 속성 method : 데이터를 전송하는 방식(get/post)
+  -->
+  <!-- 
+      input태그 작성시에도 2가지속성을 필수
+      type : 입력할 양식을 선택(text : 일반 입력양식 / submit : 제출하는 버튼)
+      name : 여러 input을 구분할 이름
+  -->
+  <form action="https://search.naver.com/search.naver" method="get">
+    <input type="text" name="query">
+    <input type="submit">
+  </form>
+  <hr>
+
+  <form action="test1.html" method="post"><!-- method 값을 post로 주면 주소창에 파라메터값이 노출되지 않음/http에 숨겨서 데이터를 보냄/-->
+    <div>
+      <span>아이디 : </span>
+      <input type="text" name="idid">
+    </div>
+    <div>
+      <span>비밀번호 : </span>
+      <input type="password" name="pwpw"><!-- password 타입은 마스킹 처리해줌 -->
+    </div>
+    <div>
+      <!-- submit이 포함된 form태그 내부의 input에 입력된 값만 전송 -->
+      <input type="submit" value="로그인"><!-- value는 입력한 값으로 표시해줌 -->
+    </div>
+  </form>
+  <!-- input의 속성 테스트(type은 제외)-->
+  <form action="test1.html" method="get">
+    <fieldset>
+      <legend>input : 태그 속성 테스트</legend>
+      <div>
+        <span>기본 : </span>
+        <!-- input 작성 시 submit을 제외하면 type과 name을 반드시 작성 -->
+        <input type="text" name="input1">
+      </div>
+      <div>
+        <span>value : </span>
+        <input type="text" name="input2" value="기본적인 값을 대입"><!-- 초기값 세팅을 위해 value 사용-->
+      </div>
+      <div>
+        <span>placeholder : </span>
+        <input type="text" name="input3" placeholder="아이디를 입력하세요"><!-- 초기값을 세팅을 해주나 커서를 클릭하면 사라짐 -->
+      </div>
+      <div>
+        <span>readonly : </span>
+        <input type="text" name="input4" value="수정이 안되는 값1" readonly><!-- 입력불가/주소에 전송이 됨-->
+        <!-- readonly는 해당 input에 데이터 수정 불가능 / 데이터 전송 가능-->
+      </div>
+      <div>
+        <span>disabled : </span>
+        <input type="text" name="input5" value="수정이 안되는 값2" disabled><!-- 비활성화/주소에 전송이 안됨-->
+        <!-- readonly는 해당 input에 데이터 수정 불가능 / 데이터 전송 x -->
+      </div>
+      <div>
+        <span>required : </span>
+        <input type="text" name="input6" required>
+        <!-- required속성이 있는 input은 반드시 해당 값을 입력하고나서 submit을 해야함 / 입력하지 않으면 submit 불가능 -->
+      </div>
+      <div>
+        <input type="submit">
+      </div>
+    </fieldset>
+  </form>
+  <hr>
+  <form action="test1.html" method="get">
+    <legend>input 태그 type속성(기본)</legend>
+    <div>
+      <label for="aa">text : </label>
+      <input type="text" name="a" id="aa">
+      <!-- 기본 텍스트를 입력할 때 사용 -->
+    </div>
+    <div>
+      <span>password : </span>
+      <input type="password" name="b">
+      <!-- text와 동일하지만 입력값을 화면에서 마스킹 처리(숨김) -->
+    </div>
+    <div>
+      <span>hidden</span>
+      <input type="hidden" name="c" value="hidden data">
+      <!-- input을 화면에 노출시키지 않고 데이터를 전송할 때 사용(전송하고 싶은 데이터를 value를 이용해서 처리)-->
+    </div>
+    <div>
+      <span>button : </span>
+      <input type="button" value="클릭" onclick="alert('짠!!!!!!!!')">
+      <!-- button은 모양은 submit과 동일하지만, 데이터전송을 목적으로 하지 않고 기능을 부여하기위해 사용 -->
+      <button>버튼1</button>
+      <!--
+          button태그도 버튼을 생성하는 태그
+          -> form태그안에서 button태그를 아무 옵션을 주지않고 만들면 자동으로 submit역할
+          -> submit이 아니라 기능용 버튼을 만들고 싶으면? -> type="button"
+      -->
+          <button type="button">기능용버튼</button>
+          <button type="submit">전송용버튼</button>
+    </div>
+    <div>
+      <span>file : </span>
+      <input type="file" name="d" multiple>
+      <!-- 
+      form태그를 이용해서 파일을 전송하려면 type="file" -> 파일을 전송하려면 form의 method는 반드시 post!!
+      첨부파일을 한번에 여러개를 전송하려면 multiple속성 추가
+      -->
+    </div>
+    <div>
+      <span>radio : </span>
+      <br>
+      <!--
+          여러개의 선택값을 주고 그 중 1개만 선택할 때 사용
+          단, 동일한 name의 radio를 여러개 생성
+          전송될 때 선택된 radio의 value값을 전송
+      -->
+      <span>다음 중 가장 어려운 것은 무엇인지 고르시오.</span>
+      <input type="radio" name="e1" value="1" id="ra1"><label for="ra1">1.JAVA</label>
+      <input type="radio" name="e1" value="2" id="ra2"><label for="ra2">2.ORACLE</label>
+      <input type="radio" name="e1" value="3" id="ra3"><label for="ra3">3.JDBC</label>
+      <input type="radio" name="e2" value="4" id="ra4"><label for="ra4">4.HTML</label>
+      <input type="radio" name="e2" value="5" id="ra5"><label for="ra5">5.전부다</label>
+      <input type="radio" name="e1" value="2" id="ra2"><span for="ra2">2.ORACLE</span>
+      <input type="radio" name="e1" value="3" id="ra3"><span for="ra3">3.JDBC</span>
+      <input type="radio" name="e2" value="4" id="ra4"><span for="ra4">4.HTML</span>
+      <input type="radio" name="e2" value="5" id="ra5"><span for="ra5">5.전부다</span>
+      <!-- 
+      label태그 : input태그와 연결해서 사용
+      -> label태그와 input태그를 연결하면 label클릭 시 연결된 input이 클릭되는 효과가 발생
+      -->
+    </div>
+    <div>
+      <span>checkbox</span>
+      <br>
+      <!-- radio와 거의 유사하지만 차이점은 여러개를 선택 할 수 있음 -->
+      <span>다음 중 어려운것을 모두 고르시오.</span><br>
+      <input type="checkbox" name="f1" value="1" id="f1"><label for="f1">1. JAVA</label>
+      <input type="checkbox" name="f1" value="2" id="f2"><label for="f1">2. ORACLE</label>
+      <input type="checkbox" name="f1" value="3" id="f3"><label for="f1">3. JDBC</label>
+      <input type="checkbox" name="f1" value="4" id="f4"><label for="f1">4. HTML</label>
+      
+      
+    </div>
+
+
+    <div>
+      <span>submit,reset</span>
+      <input type="submit" value="전송">
+      <input type="reset" value="취소">
+      <!-- 
+      submit, button, reset은 모두 버튼모양을 하고있고, 버튼의 글씨는 value속성을 이용해서 표현
+      submit : 해당 form을 제출
+      button : 기능을 개발자가 구현(Javascript)
+      reset : 해당 form 내부의 입력값을 모두 초기화
+      -->
+    </div>
+  </form>
+
+  <form action="test1.html" method="get">
+    <fieldset>
+      <legend>input type -> HTML5에서 추가된 type</legend>
+      <div>
+        <label for="aa">color : </label>
+        <input type="color" id="aa" name="color">
+      </div>
+      <div>
+        <label for="bb">date : </label>
+        <input type="date" id="bb" name="date" min="2025-07-11" max="2025-07-29">
+        <input type="week" name="week">
+        <input type="time" name="time">
+      </div>
+      <div>
+        <label for="cc">number : </label>
+        <input type="number" name="number" id="cc" value="1" min="0" max="10" stop="2">
+      </div>
+      <div>
+        <label for="dd">url : </label>
+        <input type="url" name="url" id="dd">
+        <!-- 입력된 값이 http://, https://로 시작하는지 검사 -->
+      </div>
+      <div>
+        <label for="ee">email : </label>
+        <input type="email" name="email" id="ee">
+        <!-- 입력된 값에 @가 포함되어있는지 검사 -->
+      </div>
+      <div>
+      <span>submit</span>
+      <input type="submit" value="전송">
+      </div>
+    </fieldset>
+  </form>
+  <hr>
+  <form action="test1.html" method="get">
+    <fieldset>
+      <legend>input태그가 아님에도 데이터를 전송할 수 있는 태그</legend>
+      <div>
+        <span>select : </span>
+        <select name="aaa">
+          <option value="1">일</option>
+          <option value="2">이</option>
+          <option value="3">삼</option>
+          <option value="4">사</option>
+        </select>
+      </div>
+      <br>
+      <div>
+        <span>textarea</span>
+        <textarea name="bbb"></textarea>
+        <!-- 
+            input태그는 한줄의 데이터만 입력 가능
+            한번에 여러 줄의 데이터를 입력해야 한다면(ex. 게시글 본문작성) -> input을 사용할 수 없음
+            -> 한번에 여러줄을 입력해야하면 textarea를 사용 
+        -->
+      </div>
+      <div>
+        <input type="submit" value="전송">
+      </div>
+    </fieldset>
+  </form>
+  <form action="test1.html" method="get">
+    <fieldset>
+
+      <legend>성별 선택</legend>
+      <div class="gender-div">
+        <input type="radio" name="gender" id="m" value="남">
+        <label for="m">남성</label>
+        <input type="radio" name="gender" id="f" value="여">
+        <label for="f">여성</label>
+      </div>
+      <div>
+        <input type="submit" value="성별전송">
+      </div>
+    </fieldset>
+  </form>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <style>
+    .gender-div{
+      overflow: hidden;
+    }
+    input[name=gender]{
+      display: none;
+    }
+    input[name=gender]+label{
+      display: block;
+      float: left;
+      width: 100px;
+      border : 1px solid #000;
+      text-align: center;
+      cursor : pointer;
+      color: red;
+    }
+    input[name=gender]:checked+label{
+      background-color: #000000;
+      color: #ffffff;
+    }
+  </style>
+</body>
+</html>

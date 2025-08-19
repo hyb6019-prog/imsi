@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.notice-write-container{
+		display:flex;
+		justify-content:center;
+		align-items:center;
+	}
+	.notice-write-wrap{
+		width:1000px
+	}
+	.notice-write-wrap .input-item > input[type="text"]{
+		border-bottom:none;padding:0;
+	}
+	.notice-write-wrap .input-item>textarea{
+		height:300px
+	}
+</style>
+</head>
+<body>
+	<th:block th:include="common/header"></th:block>
+		<main class="content notice-write-container">
+			<section class="section notice-write-wrap">
+				<div class="page-title">공지사항 작성(에디터)</div>
+				<!-- 
+					첨부파일을 포함해서 데이터를 전송하는 경우
+					method = "post"
+					enctype="multipart/form-data"
+					두개 속성을 반드시 명시해야 함
+				 -->
+				<form action="/notice/write" method="post" enctype="multipart/form-data">
+					<table class="tbl">
+						<tr>
+							<th>제목</th>
+							<td colspan="3">
+								<div class="input-item">
+									<input type="text" name="noticeTitle">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th style="width:10%">작성자</th>
+							<td style="width:40%">
+								<span th:text="${session.member.memberId}"></span>
+								<input type="hidden" name="noticeWriter" th:value="${session.member.memberId}">
+							</td>
+							<th style="width:10%">첨부파일</th>
+							<td style="width:40%">
+							<!-- 
+								input type="file"의 name은 vo의 변수명과 다르게 작성
+								multiple 옵션을 사용해야 첨부파일 여러개 첨부 가능
+							 -->
+								<input type="file" name="upfile" multiple>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4" class="left">
+								<div class="input-item">
+									<!-- 본문은 여러줄의 값을 입력해야함 > input태그 사용 불가능 > textarea-->
+									<textarea name="noticeContent"></textarea>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4">
+								<button type="submit" class="btn-primary lg">
+									등록하기
+								</button>
+							</td>
+						</tr>
+					</table>
+					
+				</form>
+			</section>
+		</main>
+		<script src="/summernote/summernote-lite.js"></script>
+		<script src="/summernote/lang/summernote-ko-kr.js"></script>
+		<link rel="stylesheet" href="/summernote/summernote-lite.css">
+		<script>
+			$("[name=noticeContent]").summernote({
+				height : 500,
+				lang : "ko-KR",
+				callbacks :{
+					//사용자가 이미지를 올리면 동작할 함수를 지정
+					onImageUpload : function(file){
+						
+					}
+				}
+			});
+		</script>
+	<th:block th:include="common/footer"></th:block>
+</body>
+</html>

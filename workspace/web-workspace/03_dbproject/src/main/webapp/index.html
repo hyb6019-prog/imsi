@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>DB 프로젝트 - 허예빈</h1>
+	<hr>
+	<!-- 
+		전체회원 조회
+		1. db 작업 필요한지 -> o
+		2. query : select *from member_tbl order by 1
+		3. query에 사용자에게 입력받아야 할 데이터가 있는지 -> x
+			3-1. 사용자에게 입력받아야 할 데이터가 있으면 -> 입력양식이 있는 페이지로 이동
+			3-2. 사용자에게 입력받아야 할 데이터가 없으면 -> servlet을 호출
+	 -->
+	 <h3><a href="/allMember">1. 전체회원 조회</a></h3>
+	 <!-- 
+	 	회원 가입
+	 	1. DB작업이 필요한지 -> O
+	 	2. query : insert into member_tbl values(memeber_seq.nextval,?,?,?,?,?,3,to_char(sysdate,'yyyy-mm-dd'))
+	 	3. query 에 사용자에게 입력받아야할 데이터가 있는지 -> O
+	 		3-1. 받아야하는 정보 : 아이디,비밀번호,이름,전화번호,주소
+	 		-> 5개를 입력받는 양식 페이지로 이동
+	  -->
+	 <h3><a href="/html/joinFrm.html">2. 회원가입</a></h3>
+	 <!-- 
+	 	아이디로 회원 조회
+	 	1. DB 작업 필요한지 ->O
+	 	2. query : select * from member_tbl where member_id = ?
+	 	3. query에 사용자에게 입력받아야 할 데이터가 있는지 -> O
+	 		3-1. 받아야하는 정보 : 아이디
+	  -->
+	 <h3><a href="/html/selectMemberId.html">3.아이디로 회원 조회</a></h3>
+	 <!-- 
+	 	회원 정보 삭제
+	 	1. DB 작업 필요한지 ->O
+	 	2. query : delete from member_tbl where member_id = ?
+	 	3. query에 사용자에게 입력받아야 할 데이터가 있는지 -> O
+	 		3-1. 받아야하는 정보 : 아이디
+	  -->
+	  <h3><a href="/html/deleteFrm.html">4.회원 정보 삭제</a></h3>
+</body>
+</html>

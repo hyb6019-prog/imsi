@@ -1,0 +1,198 @@
+package kr.co.iei.notice.controller;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+
+import jakarta.servlet.http.HttpServletResponse;
+import kr.co.iei.notice.model.service.NoticeService;
+import kr.co.iei.notice.model.vo.NoticeFile;
+import kr.co.iei.notice.model.vo.Notice;
+import kr.co.iei.notice.model.vo.NoticeComment;
+import kr.co.iei.notice.model.vo.NoticeListData;
+import kr.co.iei.util.FileUtil;
+
+@Controller
+@RequestMapping(value="/notice")
+public class NoticeController {
+	
+	@Autowired
+	private NoticeService noticeService;
+	
+	@Value("${file.root}")
+	private String root;//application.properties에 설정되어 있는 file.root의 값을 가지고 와서 문자열로 저장
+	
+	@Autowired
+	private FileUtil fileUtil;
+	
+	@GetMapping(value="/list")
+	public String noticeList(int reqPage, Model model) {
+		NoticeListData nld = noticeService.selectNoticeList(reqPage);
+		model.addAttribute("list",nld.getList());
+		model.addAttribute("pageNavi", nld.getPageNavi());
+		return "notice/list";
+	}
+	
+	@GetMapping(value="/writeFrm")
+	public String noticeWriteFrm() {
+		return "notice/writeFrm";
+	}
+	
+	@PostMapping(value="/write")
+	public String noticeWrite(Notice n, MultipartFile[] upfile, Model model) {
+		System.out.println(n);
+		System.out.println("첨부파일 수 : "+upfile.length);
+		//input type=text에 아무것도 입력하지 않고 전송하면 null이 아니라 빈문자열("")
+		//input type=file에 아무것도 첨부하지 않고 전송하면 배열 길이는 0이 아니라 1, 첫번째 파일이 비어있음
+		
+		//첨부파일은 서버에 업로드를 진행, 업로드된 결과(업로드한 파일명)을 DB에 저장
+		//첨부파일은 여러개 있을 수 있으므로 반복문으로 처리
+		List<NoticeFile> fileList = new ArrayList<NoticeFile>();	
+		//첨부파일이 없으면 첫번째 파일이 비어있음 -> 첨부파일이 있을때만 데이터 처리
+		if(!upfile[0].isEmpty()) {
+			//실제 파일이 업로드 될 폴더 설정
+			String savepath = root + "/notice/";
+			
+			for(MultipartFile file : upfile) {
+				//사용자가 업로드한 파일의 원본이름
+				String filename = file.getOriginalFilename();
+				String filepath = FileUtil.upload(savepath, file);
+				//파일을 업로드 할 위치와 파일객체를 주면서 업로드 요청
+				//-> 파일명이 겹쳤을때 중복처리를 해서 업로드 수행
+				//-> 중복처리가 된 파일명을 리턴(DB에 insert해야 하므로)
+				System.out.println("filename : "+filename);
+				System.out.println("filepath : "+filepath);
+				NoticeFile noticeFile = new NoticeFile();
+				noticeFile.setFilename(filename);
+				noticeFile.setFilepath(filepath);
+				fileList.add(noticeFile);
+			}
+		}
+		int result = noticeService.insertNotice(n,fileList);
+		model.addAttribute("title","공지사항 작성 완료!");
+		model.addAttribute("text","공지사항이 등록되었습니다.");
+		model.addAttribute("icon","success");
+		model.addAttribute("loc", "/notice/list?reqPage=1");
+		return "common/msg";
+	}
+	
+	@GetMapping(value="/view")
+	public String noticeView(int noticeNo, Model model) {
+		Notice n = noticeService.selectOneNotice(noticeNo);
+		if(n == null) {
+			model.addAttribute("title", "게시글 조회 실패");
+			model.addAttribute("text","이미삭제된 게시글 입니다.");
+			model.addAttribute("icon", "info");
+			model.addAttribute("loc","/notice/list?reqPage=1");
+			return "common/msg";
+		}else {
+			model.addAttribute("n",n);
+			return "notice/view";
+		}
+	}
+	
+	@GetMapping(value="/filedown")
+	public void filedown(int noticeFileNo, HttpServletResponse response) {//다운로드만하고 그 페이지에 머물거라 void 타입 함수로 설정
+		NoticeFile noticeFile = noticeService.selectOneNoticeFile(noticeFileNo);
+		String savepath = root+"/notice/";
+		//download에 필요한 객체를 downloadFile 매소드에 전달
+		//1. 다운로드 할 파일이 저장되어있는 폴더 위치
+		//2. 실제 저장된 파일 이름
+		//3. 원본 파일 이름
+		//4. 응답객체(파일 다운로드를 진행할 객체)
+		
+		FileUtil.downloadFile(savepath, noticeFile.getFilepath(), noticeFile.getFilename(), response);
+	}
+	
+	@GetMapping(value="/updateFrm")
+	public String updateFrm(int noticeNo, Model model) {
+		Notice n = noticeService.selectOneNotice(noticeNo);
+		model.addAttribute("n", n);
+		return "notice/updateFrm";
+	}
+	
+	@PostMapping(value="/update")
+	public String update(Notice n, MultipartFile[] upfile, int[] delFileNo) {
+		//새로 추가한 파일 업로드
+		List<NoticeFile> fileList = new ArrayList<NoticeFile>();
+		String savepath = root + "/notice/";
+		if(!upfile[0].isEmpty()) {
+			for(MultipartFile file : upfile) {
+				String filename = file.getOriginalFilename();
+				String filepath = FileUtil.upload(savepath, file);
+				NoticeFile nf = new NoticeFile();
+				nf.setFilename(filename);
+				nf.setFilepath(filepath);
+				fileList.add(nf);
+			}
+		}
+		//수정요청 시 데이터를 3개 전달(n : notice테이블 수정 / fileList : 새첨부파일 추가용 / delFileNo : 삭제파일용)
+		//-> DB작업이 완료되면 실제 업로드된 파일을 지우기위해서 삭제한 파일의 filepath 필요하기 때문에
+		List<NoticeFile> delFileList = noticeService.updateNotice(n,fileList,delFileNo);
+		
+		for(NoticeFile noticeFile : delFileList) {
+			File delFile = new File(savepath+noticeFile.getFilepath());
+			delFile.delete();
+		}
+		
+		return "redirect:/notice/view?noticeNo="+n.getNoticeNo();
+	}
+	
+	@GetMapping(value="/delete")
+	public String delete(int noticeNo, Model model) {
+		List<NoticeFile> list = noticeService.deleteNotice(noticeNo);
+		String savepath = root+"/notice";
+		for(NoticeFile noticeFile : list) {
+			File delFile = new File(savepath+noticeFile.getFilepath());
+			delFile.delete();
+		}
+		model.addAttribute("title", "게시글 삭제 완료");
+		model.addAttribute("text", "게시글이 삭제 되었습니다.");
+		model.addAttribute("icon", "success");
+		model.addAttribute("loc", "/notice/list?reqPage=1");
+		return "common/msg";
+	}
+	
+	@PostMapping(value="/insertComment")
+	public String insertComment(NoticeComment nc) {
+//		System.out.println(nc);
+		int result = noticeService.insertNoticeCommment(nc);
+		return "redirect:/notice/view?noticeNo="+nc.getNoticeRef();
+	}
+	
+	@PostMapping(value="/updateComment")
+	public String updateComment(NoticeComment nc) {
+		int result = noticeService.updateNoticeComment(nc);
+		return "redirect:/notice/view?noticeNo="+nc.getNoticeRef();
+	}
+	
+	@GetMapping(value="/deleteComment")
+	public String deleteComment(NoticeComment nc) {
+		int result = noticeService.deleteNoticeComment(nc.getNoticeCommentNo());
+		return result;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    #add-zone, #test-zone{
+      border : 3px solid red;
+      padding: 20px;
+    }
+    #hide-btn{
+      display: none;
+    }
+    #h2{
+      background-color: black;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>DOM1</h1>
+  <hr>
+  <div id="add-zone"></div>
+
+  <button onclick="func1();">클릭1</button>
+  <button onclick="func2();">클릭2</button>
+
+  <div id="test-zone"></div>
+  <button onclick="func3();">클릭3</button>
+
+  <hr>
+  <div class="pw-wrap">
+    <label for="pw">비밀번호</label>
+    <input type="password" name="pw" id="pw">
+
+    <span class="material-icons" onclick="hidePw();" id="hide-btn">visibility</span>
+    <span class="material-icons" onclick="showPw();" id="show-btn">visibility_off</span>
+  </div>
+  <hr>
+  <h2 id="h2">테스트 문구</h2>
+  <button onclick="func4();">CSS속성 변경</button>
+  <hr>
+  <div>
+    <div id="del-div1" class="del-div">삭제용 div1</div>
+    <div id="del-div2" class="del-div">삭제용 div2</div>
+    <div id="del-div3" class="del-div">삭제용 div3</div>
+    <div id="del-div4" class="del-div">삭제용 div4</div>
+    <div id="del-div5" class="del-div">삭제용 div5</div>
+  </div>
+  <button onclick="func5();">div3 삭제</button>
+  <button onclick="func6();">전체삭제</button>
+  <button id="btn">div5삭제하기</button>
+  <button onclick="func7();">div5삭제하기 버튼 활성화</button>
+  <button onclick="func8();">div5삭제하기 버튼 비활성화</button>
+
+  <script src="js/09_dom1.js"></script>
+</body>
+</html>

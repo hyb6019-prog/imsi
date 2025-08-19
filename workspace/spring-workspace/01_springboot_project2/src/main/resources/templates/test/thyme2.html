@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body.name>
+	<h1>Thymeleaf 객체 데이터 출력</h1>
+	<hr>
+	<!-- <h3 th:text="${s1}"></h3> -->
+	<ul>
+		<li th:text="${s1.name}"></li> <!-- s1.getName(); 변수 이름을 넣긴하지만 실제로 변수를 호출하는 것이 아닌 getter 매소드 호출-->
+		<li th:text="${s1.age}"></li> <!-- s1.getAge(); -->
+		<li th:text="${s1.addr}"></li> <!-- s1.getAddr(); -->
+		<li th:text="${s1.testData}"></li> <!-- s1.getTestData(); -->
+		
+	</ul>
+	<ul>
+		<li th:text="${s2.name}"></li>
+		<li th:text="${s2.age}"></li>
+		<li th:text="${s2.addr}"></li>
+		<li th:text="${s2.testData}"></li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kr.co.iei.memo.model.dao.MemoDao">
+	<select id="selectAllMemo" resultType="memo">
+		select * from memo_tbl order by 1 desc
+	</select>
+	<insert id="insertMemo">
+		insert into memo_tbl values(memo_seq.nextval, #{memoTitle}, #{memoContent}, #{memoWriter}, to_char(sysdate, 'yyyy-mm-dd'))
+	</insert>
+	<select id="searchWriter" resultType="memo">
+		select * from memo_tbl where memo_writer like '%'||#{memoWriter}||'%'
+	</select>
+	<select id="getMemo" resultType="memo">
+		select * from memo_tbl where memo_id = #{memoId}
+	</select>
+	<select id="selectOneMemo">
+		select * from memo_tbl where memo_id = #{memoId}
+	</select>
+	<update id="memoUpdate">
+		update memo_tbl set memo_title= #{memoTitle}, memo_content= #{memoContent} where memo_id= #{memoId}
+	</update>
+	<delete id="deleteMemo">
+		delete from memo_tbl where memo_id = #{memoId}
+	</delete>
+	
+</mapper>

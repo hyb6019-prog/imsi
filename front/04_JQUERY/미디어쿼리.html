@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>미디어쿼리</title>
+  <style>
+    #div{
+      width: 200px;
+      height: 200px;
+      border: 1px solid black;
+      background-color: antiquewhite;
+    }
+    /*
+    max-width : 기본을 큰 화면에 두고 브라우저 크기가 작아질때 css를 추가 
+    min-width : 기본을 작은화면에 두고 브라우저 크기가 커질때 css를 추가
+    */
+    @media (max-width : 1180px){
+      #div{
+        background-color: blueviolet;
+      }
+    @media (max-width : 720px){
+
+      }
+    @media (max-width : 550px){
+
+      }
+    @media (max-width : 360px){
+
+      }
+    }
+    </style>
+</head>
+<body>
+  <div id="div"></div>
+</body>
+</html>

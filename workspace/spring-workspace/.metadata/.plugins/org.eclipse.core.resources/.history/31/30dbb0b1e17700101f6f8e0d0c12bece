@@ -1,0 +1,14 @@
+package kr.co.iei.photo.model.dao;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import kr.co.iei.photo.model.vo.Photo;
+
+@Mapper
+public interface PhotoDao {
+
+	int insertPhoto(Photo p);
+
+	int selcetTotalCount();
+
+}

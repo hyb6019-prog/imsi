@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>메모 목록</h1>
+	<hr>
+	<!-- <a th:href="@{/member/searchId(memberId=${member.memberId})}" th:text="${member.memberId}"></a> -->
+	<div>
+		<a href="/memo/writeFrm">메모 작성하기</a>
+	</div>
+	<form action="/memo/searchWriter" method="get">
+		<input type="text" name="memoWriter" placeholder="작성자를 입력하세요	">
+		<input type="submit" value="조회">
+	</form>
+	<table border="1">
+		<thead>
+			<tr>
+				<th style="width: 15%;">메모번호</th>
+				<th style="width: 40%;">제목</th>
+				<th style="width: 25%;">작성자</th>
+				<th style="width: 20%;">작성일</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="list : ${allList}">
+				<td th:text="${list.memoId}"></td>
+				<td>
+					<a th:href="@{/memo/getMemo(memoId=${list.memoId})}" th:text="${list.memoTitle}"></a>
+				</td>
+				<td th:text="${list.memoWriter}"></td>
+				<td th:text="${list.writeDate}"></td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="/">메인페이지로 이동</a>
+</body>
+</html>

@@ -1,0 +1,245 @@
+package kr.co.iei.notice.model.service;
+
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import kr.co.iei.notice.model.dao.NoticeDao;
+import kr.co.iei.notice.model.vo.NoticeFile;
+import kr.co.iei.notice.model.vo.Notice;
+import kr.co.iei.notice.model.vo.NoticeComment;
+import kr.co.iei.notice.model.vo.NoticeListData;
+
+@Service
+public class NoticeService {
+	
+	@Autowired
+	private NoticeDao noticeDao;
+
+	
+	public NoticeListData selectNoticeList(int reqPage) {
+		//reqpage : 사용자가 요청한 페이지 번호
+		//한 페이지에 보여줄 게시물 수(지정) : 10개
+		int numPerPage = 10;
+		
+		//쿼리문은 변경되지 않고 시작번호와 끝번호가 변경
+		//사용자가 요청한 페이지에 따라서 게시물의 시작번호와 끝번호를 계산
+		//reqPage == 1 -> start = 1 /end = 10
+		//reqPage == 2 -> start = 11 /end = 20
+		//reqPage == 3 -> start = 21 /end = 30
+		//reqPage == 4 -> start = 31 /end = 40
+		//reqPage == 5 -> start = 41 /end = 50
+		int end = reqPage * numPerPage;
+		int start = end - numPerPage + 1;
+		//Mybatis에 매개변수를 전달할 때는 1개의 객체로 묶어서 전달
+		//전달하고 싶은 데이터를 담을 vo가 있으면 vo로 묶어서 전달
+		//담을 vo가 없으면 -> 1) vo를 생성 2)HashMap사용
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("start",start);
+		param.put("end", end);
+		
+		//페이지네비게이션을 제작(사용자가 클릭해서 다른페이지를 요청할 수 있는 요소)
+		//페이지 네비를 Service에서 만드는 이유 -> 총 게시물 수, reqPage, numPerPage 등과 같은 데이터가 필요함
+		//전체 게시물 수 조회 -> 전체 게시물 수를 알아야 numPerPage와 연산을 통해서 총 페이지 수 계산
+		
+		int totalCount = noticeDao.selectNoticeTotalCount();
+		System.out.println("총 게시물 수 : " + totalCount);
+		//총 페이지 수 계산
+		/*
+		int totalPage = 0;
+		if(totalCount % numPerPage == 0) {
+			totalPage = totalCount / numPerPage;
+		}else {
+			totalPage = totalCount / numPerPage + 1;
+		}
+		*/
+		/*
+		int totalPage = totalCount / numPerPage;
+		if(totalCount % numPerPage != 0) {
+			totalPage += 1;
+		}
+		*/
+		int totalPage = (int)(Math.ceil(totalCount/(double)numPerPage));
+		
+		System.out.println("totalPage : "+totalPage);
+		
+		//페이지 네비게이션 길이 지정
+		int pageNaviSize = 5;
+		
+		//페이지 네비 시작번호 지정
+		//reqPage 1~5 : 1 2 3 4 5			(0~4)/5 	-> 0 x 5	->0
+		//reqPage 6~10 : 6 7 8 9 10			(5~9)/5 	-> 1 x 5	->5
+		//reqPage 11~15 : 11 12 13 14 15	(10~14)/5	-> 2 x 5	->10
+		//...
+		int pageNo = ((reqPage -1)/pageNaviSize)*pageNaviSize + 1;
+		
+		//페이지 네비 html을 생성
+		String pageNavi = "<ul class='pagination circle-style'>";
+		//이전버튼(1페이지로 시작하는게 아닌경우에만 이전버튼 생성)
+		if(pageNo != 1) {
+			pageNavi += "<li>";
+			pageNavi += "<a class='page-item' href='/notice/list?reqPage="+(pageNo-1)+"'>";
+			pageNavi += "<span class='material-icons'>chevron_left</span>";
+			pageNavi += "</a>";
+			pageNavi += "</li>";
+		}
+		
+		for(int i=0; i<pageNaviSize; i++) {
+			pageNavi += "<li>";
+			if(pageNo == reqPage) {
+				pageNavi += "<a class='page-item active-page' href='/notice/list?reqPage="+pageNo+"'>";
+			}else {
+				pageNavi += "<a class='page-item' href='/notice/list?reqPage="+pageNo+"'>";
+				
+			}
+			pageNavi += pageNo;
+			pageNavi += "</a>";
+			pageNavi += "</li>";
+			
+			pageNo++;
+			//페이징을 제작하다가 마지막 페이지를 출력했으면 더이상 반복하지 않고 반복문 종료
+			if(pageNo > totalPage) {
+				break;
+			}
+		}
+		//다음버튼(최종페이지를 출력하지 않은경우)
+		if(pageNo <= totalPage) {
+			pageNavi += "<li>";
+			pageNavi += "<a class='page-item' href='/notice/list?reqPage="+pageNo+"'>";
+			pageNavi += "<span class='material-icons'>chevron_right</span>";
+			pageNavi += "</a>";
+			pageNavi += "</li>";
+		}
+		
+		pageNavi += "</ul>";
+		
+		System.out.println(pageNavi);
+		
+		List list = noticeDao.selectNoticeList(param);
+		
+		//되돌려주고 싶은 데이터가 list와 String
+		//언어에서 매소드(함수)의 수행결과는 반드시 하나의 타입으로 리턴
+		// -> 객체를 생성해서 사용(여러 데이터를 하나로 묶는 객체)
+		NoticeListData nld = new NoticeListData(list, pageNavi);
+		return nld;
+	}
+
+	@Transactional
+	public int insertNotice(Notice n, List<NoticeFile> fileList) {
+		int newNoticeNo = noticeDao.getNoticeNo();
+		n.setNoticeNo(newNoticeNo);
+		int result = noticeDao.insertNotice(n);
+		for(NoticeFile noticeFile : fileList) {
+			noticeFile.setNoticeNo(newNoticeNo);
+			result += noticeDao.insertNoticeFile(noticeFile);
+		}
+		return result;
+	}
+
+
+	public Notice selectOneNotice(int noticeNo) {
+		Notice n = noticeDao.selectOneNotice(noticeNo);
+		if(n != null) {
+			//해당 게시글의 첨부파일
+			List fileList = noticeDao.selectNoticeFile(noticeNo);
+			n.setFileList(fileList);
+			//해당 게시글의 댓글 조회
+			List commentList = noticeDao.selectNoticeCommentList(noticeNo);
+			for(NoticeComment nc :commentList)
+			n.setCommentList(commentList);
+		}
+		return n;
+	}
+
+
+	public NoticeFile selectOneNoticeFile(int noticeFileNo) {
+		NoticeFile noticeFile = noticeDao.selectOneNoticeFile(noticeFileNo);
+		return noticeFile;
+	}
+
+	@Transactional
+	public List<NoticeFile> updateNotice(Notice n, List<NoticeFile> fileList, int[] delFileNo) {
+		/*
+		DB작업
+		1. Notice테이블 update
+		2. NoticeFile테이블 insert
+		3. NoticeFile테이블 delete
+		4. NoticeFile테이블 select //위 순서는 상관없으나 무조건 select 먼저 해놓고 나머지 작업을 해야됨(filepath값을 삭제되기 전에 알아야 하기 때문에)
+		 */
+		//notice -> update
+		int result = noticeDao.updateNotice(n);
+		//notice_file -> insert
+		for(NoticeFile noticeFile : fileList) {
+			noticeFile.setNoticeNo(n.getNoticeNo());
+			result += noticeDao.insertNoticeFile(noticeFile);
+		}
+		//NoticeFile테이블 select / delete
+		//-> 삭제파일이 있는 경우에만 작업수행
+		List<NoticeFile> delFileList = new ArrayList<NoticeFile>();
+		if(delFileNo != null) {
+			List list = noticeDao.selectNoticeFileList(delFileNo);
+			for(int noticeFileNo : delFileNo) {
+//				NoticeFile noticeFile = noticeDao.selectOneNoticeFile(noticeFileNo);
+//				delFileList.add(noticeFile);
+				result += noticeDao.deleteNoticeFile(noticeFileNo);
+			}
+		}
+		return delFileList;
+	}
+
+	@Transactional
+	public List<NoticeFile> deleteNotice(int noticeNo) {
+		//notice를 삭제하면 해당 게시글의 첨부파일을 모두 삭제
+		//외래키 설정으로 자동으로 DB에서 삭제 -> 삭제전에 DB의 파일 몰고 조회 후 삭제
+		List delFileList = noticeDao.selectNoticeFile(noticeNo);
+		int result = noticeDao.deleteNotice(noticeNo);
+		return delFileList;
+	}
+
+	@Transactional
+	public int insertNoticeCommment(NoticeComment nc) {
+		int result = noticeDao.insertNoticeComment(nc);
+		return result;
+	}
+
+	@Transactional
+	public int updateNoticeComment(NoticeComment nc) {
+		int result = noticeDao.updateNoticeComment(nc);
+		return result;
+	}
+	@Transactional
+	public int deleteNoticeComment(int noticeCommentNo) {
+		int result = noticeDao.deleteNoticeComment(noticeCommentNo);
+		return result;
+	}
+	
+	@Transactional
+	public int likepush(NoticeComment nc, int memberNo) {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("noticeCommentNo", nc.getNoticeCommentNo());
+		param.put("memberNo", memberNo);
+		int result = noticeDao.insertNoticeCommentLike(param);
+		
+		int likeCount = noticeDao.selectNoticeCommentLikeCount(nc.getNoticeCommentNo());
+		return likeCount;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

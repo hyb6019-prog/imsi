@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM2</title>
+</head>
+<body>
+  <h1>DOM2</h1>
+  <hr>
+  <div id="d1" class="dd1" name="name1"><span>첫번째</span></div>
+  <div id="d2" class="dd1" name="name2">두번째</div>
+  <div id="d3" class="dd2" name="name2">두번째</div>
+  <div id="d4" class="dd2" name="name2">두번째</div>
+  <button onclick="func1();">버튼1</button>
+  <button id="btn2">버튼2</button>
+  <button id="btn3">버튼2</button>
+  <hr>
+  <input type="text" name="input1" id="input1" value="기본입력값">
+  <button onclick="func4();">버튼4</button>
+  <button id="btn5">버튼5</button>
+  <br>
+  <input type="password" name="input2" id="input2" readonly>
+  <input type="checkbox" id="input3" checked>
+  <button onclick="func6();">버튼6</button>
+  <button onclick="func7();">버튼7</button>
+  <button onclick="func8();">버튼8</button>
+  <hr>
+  <div class="agree-wrap">
+    <div>
+      <input type="checkbox" name="agree" id="agree1">
+      <label for="agree1">이용약관 동의</label>
+    </div>
+    <div>
+      <input type="checkbox" name="agree" id="agree2">
+      <label for="agree2">개인정보처리 동의</label>
+    </div>
+    <div>
+      <input type="checkbox" name="agree" id="agree3">
+      <label for="agree3">광고 수신 동의</label>
+    </div>
+    <div>
+      <input type="checkbox" id="all-agree">
+      <label for="all-agree">전체 약관 동의</label>
+    </div>
+  </div>
+  <hr>
+  <button onclick="minus();">-</button>
+  <!--
+  <input type="text" id="amount" style="width: 20px;" value="1">
+  -->
+  <span id="amount">1</span>
+  <button onclick="plus();">+</button>
+  <hr>
+
+  <a id="link" href="http://www.naver.com">네이버로 이동</a>
+  <button id="btn9">구글로 이동으로 변경</button>
+  <hr>
+  <div class="div-wrap">
+    <div id="test1" class="test-div" onclick="func15(this);"></div>
+    <div id="test2" class="test-div big" onclick="func15(this);"></div>
+    <div id="test3" class="test-div" onclick="func15(this);"></div>
+  </div>
+  <button id="btn10">버튼10</button>
+  <button id="btn11">버튼11</button>
+  <button id="btn12">버튼12</button>
+  <button id="btn13">버튼13</button>
+  <button id="btn14">버튼14</button>
+
+
+
+
+
+
+
+  <style>
+    .div-wrap{
+      overflow: hidden;
+    }
+    .test-div{
+      width: 150px;
+      height: 150px;
+      border: 1px solid black;
+      background-color: blue;
+      float: left;
+      margin: 20px;
+    }
+    .big{
+      width: 300px;
+      height: 300px;
+      background-color: pink;
+    }
+  </style>
+
+  <script src="js/10_dom2.js"></script>
+</body>
+</html>

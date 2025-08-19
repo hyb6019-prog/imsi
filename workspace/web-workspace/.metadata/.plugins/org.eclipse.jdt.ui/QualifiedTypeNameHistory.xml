@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="kr.co.iei.member.model.dao.MemberDao"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="java.io.PrintWriter"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="kr.co.iei.common.JDBCTemplate"/>
+    <fullyQualifiedTypeName name="kr.co.iei.member.model.vo.Member"/>
+    <fullyQualifiedTypeName name="kr.co.iei.member.model.service.MemberService"/>
+    <fullyQualifiedTypeName name="java.lang.reflect.Member"/>
+    <fullyQualifiedTypeName name="kr.co.iei.memo.model.dao.MemoDao"/>
+    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="kr.co.iei.memo.model.service.MemoService"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="kr.co.iei.memo.model.vo.Memo"/>
+</qualifiedTypeNameHistroy>

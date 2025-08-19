@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.photo-write-wrap{
+		width: 1000px;
+		margin: 0 auto;
+		
+	}
+	.photo-write-wrap .input-item>input[type=text]{
+		padding: 0;
+		border-bottom: none;
+	}
+</style>
+</head>
+<body>
+	<th:block th:include="common/header"></th:block>
+	<main class="content">
+		<section class="section photo-write-wrap">
+			<div class="page-title">사진게시판 글쓰기</div>
+		</section>
+	</main>
+	<th:block th:include="common/footer"></th:block>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>반응형 단위</title>
+  <style>
+    body{
+      margin: 0px;
+    }
+    .test{ 
+      width: 80%;
+      background-color: antiquewhite;
+      overflow: hidden;
+
+    }
+    .test1{
+      float: left;
+      width: 100px;
+      height: 100px;
+      border: 1px solid black;
+      background-color: darkcyan;
+    }
+    .test2{
+      float: left;
+      width: 15%;
+      height: 100px;
+      border: 1px solid black;
+      background-color: darkcyan;
+      /*
+      max-width : 상대단위로 width가 변할 때 더이상 늘어나지 않는 최대너비 지정
+      min-width : 상대단위로 width가 변할 때 더이상 줄어들지 않는 최소너비 지정
+      max-heigh, min-height도 존재
+      */
+      min-width: 70px;
+      max-width: 120px;
+    }
+    .test3{
+      background-color: antiquewhite;
+      /* height: 120px; */
+      min-height: 100px;
+    }
+    .test4{
+      float: left;
+      width: 20vw;
+      height: 100px;
+      border: 1px solid black;
+      background-color: darkcyan;
+      /*
+      vw(viewport-width) : 상대단위
+                            -> 기준이 부모요소 너비가 아니라 현재 화면의 너비
+                            -> 100vw가 현재 화면의 100%
+
+      vh(viewport-height) : 상대단위
+                            -> 기준이 부모요소 높이가 아니라 현재 화면의 높이
+                            -> 100vh가 현재 화면의 100%
+      */
+
+    }
+  </style>
+</head>
+<body>
+  <h1>반응형 단위</h1>
+  <hr>
+  <div class="test">
+    <div class="test1">aaaaaa</div>
+    <div class="test1">bbbbbb</div>
+    <div class="test1">cccccc</div>
+    <div class="test1">dddddd</div>
+  </div>
+  <hr>
+  <div class="test">
+    <div class="test2">aaaaaa</div>
+    <div class="test2">bbbbbb</div>
+    <div class="test2">cccccc</div>
+    <div class="test2">dddddd</div>
+  </div>
+  <div class="test3">
+    <div>aaa</div>
+    <div>aaa</div>
+    <div>aaa</div>
+  </div>
+  <hr>
+  <div class="test">
+    <div class="test4">aaaaaa</div>
+    <div class="test4">bbbbbb</div>
+    <div class="test4">cccccc</div>
+    <div class="test4">dddddd</div>
+  </div>
+</body>
+</html>

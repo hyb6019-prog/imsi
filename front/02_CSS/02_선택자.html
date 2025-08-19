@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>선택자2</title>
+  <link rel="stylesheet" href="css/selector2.css">
+</head>
+<body>
+  <h2>속성 선택자</h2>
+  <p>[]를 이용해서 속성과 속성값을 사용하여 선택</p>
+  <pre>
+    선택자[속성이름]{속성이름:속성값;}
+    선택자[속성이름=속성값]{속성이름:속성값;}
+  </pre>
+  <div name="name1" class="div-class1">div1</div>
+  <div name="name2" class="div-class2">div2</div>
+  <div name="name3" class="div-class3">div3</div>
+  <div name="name1" class="class-div">div4</div>
+  <hr>
+  <h2>자손/후손 선택자</h2>
+  <p>
+    자손선택자 : 바로 아래 하위 요소<br>
+    후손선택자 : 하위 요소 전체
+  </p>
+  <div class="div1">
+    <h2>나는 div1의 자손</h2>
+    <h3>나는 div1의 자손</h3>
+    <ul class="ul1">
+      <li>나는 ul1의 자손</li>
+      <li>나는 ul1의 자손</li>
+    </ul>
+    <ul class="ul2">
+      <li>나는 ul2의 자손</li>
+      <li>나는 ul2의 자손</li>
+    </ul>
+  </div>
+  <hr>
+  <h2>동위선택자</h2>
+  <p>동위 관계에 있는 태그를 선택할 때 사용</p>
+  <pre>바로 다음요소 선택 : 선택자+선택자{속성:값;} / 다음 모든요소 선택 : 선택자 ~ 선택자{속성:값;}</pre>
+  <div class="div2">
+    <div class="test1">test1</div>
+    <div class="test2">test2</div>
+    <div class="test3">test3</div>
+    <div class="test1">test4</div>
+    <div class="test2">test5</div>
+  </div>
+  <hr>
+  <h2>반응 선택자</h2>
+  <p>사용자의 행동에 따라서 달라지는 선택자</p>
+  <pre>사용자가 클릭한 태그 : 선택자:active{속성:값;} / 사용자의 마우스가 올라간 태그 : 선택자:hover{속성:값;}</pre>
+  <div class="action-div active-test"></div>
+  <hr>
+  <div class="action-div hover-test"></div>
+  <hr>
+  <h2>상태선택자</h2>
+  <p>입력양식의 상태에 따라서 선택되는 선택자</p>
+  <pre>input태그선택자:상태{속성 : 값}</pre>
+  <input type="checkbox" name="hobby" value="잠자기" id="sleep">
+  <label for="sleep">잠자기</label>
+  <input type="checkbox" name="hobby" value="독서" id="book">
+  <label for="book">책읽기</label>
+  <br>
+  <input type="text" name="id"><br>
+  <input type="text" name="test1" readonly>
+  <input type="text" name="test2" disabled>
+
+
+
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

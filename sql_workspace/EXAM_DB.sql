@@ -1,0 +1,17 @@
+CREATE TABLE BOARD(
+BOARD_NO        NUMBER          PRIMARY KEY,
+BOARD_WRITER    VARCHAR2(50)    NOT NULL,
+BOARD_TITLE     VARCHAR2(50)    NOT NULL,
+BOARD_CONTENT   VARCHAR2(300)   NOT NULL,
+READ_COUNT      NUMBER
+);
+
+CREATE SEQUENCE BOARD_SEQ;
+select * from board;
+
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'user01','첫번째 게시글','이건 첫번째 게시글입니다!!',0);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'user01','두번째 게시글','두번째 게시글도 제가 작성하네요^^',0);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'user02','안녕하세요','안녕하세요 신입회원입니다. 잘부탁드립니다!!',0);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'user02','게시판관련문의','제가 게시글을 많이 작성해도 괜찮을까요?',0);
+INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,'user01','오랜만입니다!','오랜만에 글을 작성하네요. 다들 잘 계시죠?',0);
+COMMIT;

@@ -1,0 +1,225 @@
+.div1{
+  background-color: antiquewhite;
+  /*
+  블록요소 크기가 지정되는 기준
+  width : 크기를 지정하지 않으면 부모 요소 너비의 100%를 가져감;
+          크기를 지정하면 지정한 만큼만 가져감
+
+  height : 크기를 지정하지 않으면, 내부에 있는 자식 높이의 합
+          크기를 지정하면 지정한 만큼만 가져감
+
+  인라인 요소 크기가 지정되는 기준
+  width/height : 내부컨텐츠의 길이와 높이 만큼
+                  -> 크기를 지정해도 크기변화가 없음(크기설정 불가능)
+  */
+  width: 500px;
+  height: 300px;
+}
+.div2{
+  width: 1000px;
+  height: 300px;
+  background-color: blanchedalmond;
+}
+.div3{
+  /* % 단위로 크기 지정 시 부모요소 크기의 비율로 설정*/
+  width: 50%;
+  height: 50%;
+  background-color: blueviolet;
+}
+/* width / height 지정 시 부모보다 크게 지정해도 그대로 적용 */
+.div4{
+  width: 500px;
+  height: 300px;
+  background-color: cadetblue;
+}
+.div5{
+  width: 300px;
+  height: 700px;
+  background-color: chocolate;
+}
+.div6{
+  width: 700px;
+  height: 300px;
+  background-color: rgba(0,0,0,0.5);
+}
+/*
+요소크기 지정 시
+width : 부모부터 내려가면서 아래로 좁혀감
+height : 가장 하위요소부터 높이를 늘려가는 형태
+*/
+
+.div7{
+  width: 500px;
+  background-color: burlywood;
+}
+.div8{
+  width: 300px;
+  height: 100px;
+  background-color: chartreuse;
+}
+.div9{
+  width: 200px;
+  height: 150px;
+  background-color: turquoise;
+}
+.div10{
+  width: 300px;
+  height: 100px;
+  background-color: darkblue;
+  
+}
+
+.div11>*{
+  width: 200px;
+  height: 200px;
+  background-color: cornflowerblue;
+  display: inline-block;
+}
+/*
+.div12{
+  display: inline;
+}
+.span2{display: none;}
+*/
+.ul1{
+  display: none;
+}
+.div13{
+  background-color: beige;
+}
+.div13>hover{
+  background-color: blue;
+}
+.div13:hover>.ul1{
+  display: block;
+}
+
+.div{
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+}
+.d1{
+  border-top-style: solid;
+  border-left-style: dashed;
+  border-right-style: dotted;
+  border-bottom-style: double;
+
+  border-top-width: 1px;
+  border-right-width: 2px;
+  border-bottom-width: 3px;
+  border-left-width: 4px;
+
+  border-top-color: aqua;
+  border-right-color: bisque;
+  border-bottom-color: blue;
+  border-left-color: yellowgreen;
+
+}
+.d2{
+  border-style: groove;
+  border-width: 5px;
+  border-color: #bbbbbb;
+}
+.d3{
+  border-style: outset;
+}
+.d3:active{
+  border-style: inset;
+}
+.d4{
+  border-style: inset;
+}
+.d5{
+  border-style: ridge;
+}
+.d6{
+  border : 5px solid red;
+}
+.d7{
+  border : 10px dashed blue;
+}
+.d8{
+  border : 1px solid black;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 30px;
+}
+.d9{
+  border: 2px solid blue;
+  border-radius: 50px;
+}
+.d10{
+  border: 2px solid red;
+  border-top-right-radius: 100px;
+  border-bottom-left-radius: 100px;
+}
+.d11{
+  border: 1px solid black;
+  box-shadow: 5px 5px 3px 2px gray;
+}
+.d12{
+  border-style: ridge;
+  box-shadow: 5px 5px 3px 2px gray;
+}
+.d13{
+  border-style: hidden;
+  box-shadow: 5px 5px 3px 2px gray;
+}
+
+.div-m{
+  width: 200px;
+  height: 200px;
+  border: 3px dashed black;
+  background-color: antiquewhite;
+}
+.test1{
+  margin: 50px;
+}
+.test2{
+  padding: 10px;
+}
+
+.test3{
+  width: 900px;
+  border: 5px dashed red;
+}
+.test4{
+  width: 300px;
+  height: 300px;
+  background-color: coral;
+  margin: 0 auto;
+}
+.test5{
+  width: 1000px;
+  padding: 100px 0px;
+  background-color: blanchedalmond;
+}
+.test6{
+  width: 400px;
+  height: 100px;
+  background-color: cadetblue;
+  color: #fff;
+  font-size: 50px;
+
+  /* "내용"이라는 글씨를 좌/우 가운데 정렬*/
+  text-align: center;
+  /* "내용"이라는 글씨를 상/하 가운데 정렬*/
+  line-height: 100px;
+
+  /* 
+      해당 div를 가운데 정렬
+      부모보다 너비가 작은 상태에서 오른쪽의 마진을 2등분해서 좌우에 균일하게 배치
+  */
+  margin : 0 auto;
+}
+.test7{
+  background-color: #ff0000;
+  padding: 20px 50px;
+}
+.test8{
+  background-color: #0000ff;
+  color: #fff;
+  padding: 20px 50px;
+  
+}
+

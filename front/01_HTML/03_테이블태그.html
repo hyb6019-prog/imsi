@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테이블태그</title>
+</head>
+<body>
+    <!--
+    테이블 태그 사용시에는 구조를 잘 유지
+    전체 표를 감싸는 <table></table>
+    한개 행을 의미하는 <tr></tr>
+    한개 열을 의미하는 <td></td>
+    table > tr > td
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    - 각 행별로 열의 숫자가 같아야 함
+    - 열의 너비를 지정하지 않으면 내부 컨텐츠 길이만큼 확보
+    -->
+    <table>
+        <tr>
+            <td>내용1</td>
+            <td>내용2</td>
+            <td>내용3</td>
+        </tr>
+        <p>p태그 추가</p>
+        <tr>
+            <td>내용4</td>
+            <td>내용5</td>
+            <td>내용6</td>
+        </tr>
+        <tr>
+            <td>내용7</td>
+            <td>내용8</td>
+            <td>내용9</td>
+        </tr>
+    </table>
+    <table border="1">
+        <tr>
+            <td>내용1</td>
+            <td>내용2</td>
+            <td>내용3</td>
+        </tr>
+        <tr>
+            <td>내용4</td>
+            <td>내용5</td>
+            <td>내용6</td>
+        </tr>
+        <tr>
+            <td>내용7</td>
+            <td>내용8</td>
+            <td>내용9</td>
+        </tr>
+    </table>
+    <hr>
+    <table border="1">
+        <!-- 테이블의 제목이나 설명을 추가하는 태그 / 기본위치가 테이블 상단 중앙-->
+        <caption>브라우저 종류</caption>
+        <tr>
+            <!-- th는 td와 마찬가지로 하나의 열을 담당 / 차이점은 글씨 진하게, 가운데정렬 -->
+            <th>브라우저 이름</th>
+            <th>개발회사</th>
+            <th>홈페이지</th>
+        </tr>
+        <tr>
+            <td>크롬</td>
+            <td>google</td>
+            <td>http://www.google.com</td>
+        </tr>
+        <tr>
+            <td>사파리</td>
+            <td>apple</td>
+            <td>http://www.apple.com</td>
+        </tr>
+        <tr>
+            <td>파이어폭스</td>
+            <td>mozilla</td>
+            <td>http://www.mozilla.com</td>
+        </tr>
+    </table>
+    <hr>
+    <table border="1">
+        <tr>
+            <th>이름</th>
+            <th>나이</th>
+            <th>성별</th>
+            <th>주소</th>
+        </tr>
+        <tr>
+            <td>유저1</td>
+            <td>21</td>
+            <td>남</td>
+            <td>서울시 강남구</td>
+        </tr>
+        <tr>
+            <td>유저2</td>
+            <td>22</td>
+            <td>여</td>
+            <td>서울시 영등포구</td>
+        </tr>
+        <tr>
+            <td>유저3</td>
+            <td>23</td>
+            <td>남</td>
+            <td>서울시 종로구</td>
+        </tr>
+        <tr>
+            <td>총인원</td>
+            <td colspan="3">3명</td>
+            <td></td>   <!-- <td> 2줄은 지우면 깔끔해짐-->
+            <td></td>
+        </tr>
+    </table>
+    <hr>
+    <table border="1">
+        <tr>
+            <th rowspan="3">이름</th> <!-- rowspan이 3개의 행에 영향을 끼침-->
+            <td>유저1</td>
+        </tr>
+        <tr>
+            <td>유저2</td>
+        </tr>
+        <tr>
+            <td>유저3</td>
+        </tr>
+        <tr>
+            <td>유저4</td>
+        </tr>
+    </table>
+    <hr>
+    <table border="1">
+        <tr>
+            <td colspan="2" rowspan="2">111</td>
+            <td>테스트1</td>
+        </tr>
+        <tr>
+            <td>테스트2</td>
+        </tr>
+        <tr>
+            <td>테스트3</td>
+            <td>테스트4</td>
+            <td>테스트5</td>
+        </tr>
+    </table>
+    <hr>
+    <table border="1">
+        <tr>
+            <td width="100">111</td>
+            <td>222</td>
+            <td>333</td>
+        </tr>
+        <tr>
+            <!-- width를 지정했어도 컨텐츠 길이가 더 우선처리 됨-->
+            <td>44444444444444444444</td>
+            <td width="100" height="100">555</td>
+            <!-- 위보다 height 값을 더 크게 주면 우선처리 됨-->
+            <td height="200">666</td>
+        </tr>
+        <tr>
+            <td>777</td>
+            <td>888</td>
+            <td>999</td>
+        </tr>
+    </table>
+    <hr>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>성별</th>
+                <th>주소</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>유저1</td>
+                <td>21</td>
+                <td>남</td>
+                <td>서울시 영등포구</td>
+            </tr>
+            <tr>
+                <td>유저2</td>
+                <td>22</td>
+                <td>여</td>
+                <td>서울시 마포구</td>
+            </tr>
+            <tr>
+                <td>유저3</td>
+                <td>23</td>
+                <td>여</td>
+                <td>서울시 용산구</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>총 인원</th>
+                <td colspan="3">3명</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

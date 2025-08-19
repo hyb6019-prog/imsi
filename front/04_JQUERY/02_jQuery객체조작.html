@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>객체조작</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <style>
+    .t-red{
+      color: red;
+    }
+    .bg-yellow{
+      background-color: yellow;
+    }
+    #test4{
+      overflow: hidden;
+    }
+    #test4>div{
+      width: 100px;
+      height: 100px;
+      float: left;
+    }
+    .d3{
+      background-color: chocolate;
+    }
+    .d4{
+      background-color: darkblue;
+    }
+  </style>
+</head>
+<body>
+  <h1>객체조작</h1>
+  <hr>
+  <h3>1. each(), is()</h3>
+  <P>each() : 배열을 관리하는 함수로, 선택된 객체들을 모두 순회하는 반복문</P>
+  <p>is("선택자") : 선택된 요소에 매개변수로 전달한 속성이 있는지 확인(true/false 형태로 리턴)</p>
+  <div id="test1">
+    <div class="d1">test-1</div>
+    <div class="d2">test-2</div>
+    <div class="d1">test-3</div>
+    <div class="d2">test-4</div>
+    <div class="d3">test-5</div>
+  </div>
+  <button onclick="func1();">each/is 테스트</button>
+  <hr>
+  <h3>2. addClass, removeClass, hasClass, ToggleClass</h3>
+  <p>addClass : 클래스를 추가할 때 사용</p>
+  <p>removeClass : 클래스를 제거할 때 사용</p>
+  <p>hasClass : 클래스를 가지고있는지 확인할 때 사용</p>
+  <p>ToggleClass : 클래스가 없으면 추가 / 있으면 삭제</p>
+  <div id="test2">
+    <div>test-1</div>
+    <div>test-2</div>
+    <div>test-3</div>
+    <div>test-4</div>
+    <div>test-5</div>
+  </div>
+  <button onclick="func2();">addClass</button>
+  <button onclick="func3();">removeClass</button>
+  <button onclick="func4();">hasClass</button>
+  <button onclick="func5();">ToggleClass</button>
+  <hr>
+  <h3>3. attr, removeAttr, prop : 엘리먼트 속성 값을 확인, 수정, 삭제하는 함수</h3>
+  <div id="test3">
+    <input type="checkbox" name="study" id="java" value="java">
+    <label>자바</label>
+    <input type="checkbox" name="study" id="oracle" value="oracle">
+    <label>오라클</label>
+    <input type="checkbox" name="study" id="front" value="front">
+    <label>front</label>
+  </div>
+  <button onclick="func6();">attr</button>
+  <button onclick="func7();">removeAttr</button>
+  <button onclick="func8();">prop</button>
+  <hr>
+  <h3>4. css : 선택된 요소의 css속성의 값을 가져오거나 설정하는 함수</h3>
+  <div id="test4">
+    <div class="d3"></div>
+    <div class="d4"></div>
+  </div>
+  <button onclick="func9();">css</button>
+  <hr>
+  <h3>5. html(), text(), val()</h3>
+  <p>html() : 선택적 요소의 컨텐츠영역(innerHTML)을 가져오거나 수정</p>
+  <p>text() : 선택적 요소의 컨텐츠영역(innerText)을 가져오거나 수정</p>
+  <p>val() : 선택적 요소의 value값을 가져오거나 수정</p>
+  <div id="test5">
+    <h1><p>안녕</p>
+    </h1>
+    <input type="text" name="str">
+  </div>
+  <button onclick="func10()">html</button>
+  <button onclick="func11()">text</button>
+  <button onclick="func12()">val</button>
+  <hr>
+  <h3>6. append, prepend, after, before : 문서객체를 특정한 위치에 삽입하는 함수</h3>
+  <p>동일한 기능을 가진 appendTo, prependTo, insertAfter, insertBefore 도 존재</p>
+  <div id="test6">
+    <p>test-1</p>
+    <p>test-2</p>
+    <p>test-3</p>
+    <p>test-4</p>
+  </div>
+  <button onclick="func13();">append</button>
+  <button onclick="func14();">prepend</button>
+  <button onclick="func15();">after</button>
+  <button onclick="func16();">before</button>
+  <hr>
+  <h3>7. remove, empty : 문서 객체를 지우는 함수</h3>
+  <p>remove : 선택한 문서객체를 삭제</p>
+  <p>empty : 선택한 문서객체를 비움 -> 선택한 문서는 남기고 내부의 후손들 모두 삭제</p>
+  <hr>
+  <h3>8. 문서객체 이동, 복사</h3>
+  <div id="test7">
+    <h2 class="test1">h2</h2>
+    <h3>h3</h3>
+  </div>
+  <div id="test8"></div>
+
+  <button id="btn17">remove</button>
+  <button id="btn18">empty</button>
+  <button id="btn19">이동</button>
+  <button id="btn20">복사</button>
+
+
+
+  <script src="js/02_controll.js"></script>
+</body>
+</html>

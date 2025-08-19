@@ -1,0 +1,72 @@
+.header{
+  width: 800px;
+  /* background-color: aqua; */
+}
+.header-top{
+  height: 46px;
+  /* background-color: antiquewhite; */
+  margin: 0px auto;
+  padding: 25px;
+  text-align: center;
+  color: darkblue;
+}
+.header-bottom{
+  height: 21px;
+  margin: 0px auto;
+  padding: 15px;
+  /* background-color: bisque; */
+  text-align: center;
+}
+.agree-content{
+  width: 600px;
+  margin: auto 100px;
+  /* background-color: aquamarine; */
+}
+.agree{
+  height: 271px;
+  margin: 30px;
+}
+.agree-name{
+  height: 22px;
+}
+.agree-name>img{
+  height: 18px;
+  width: 18px;
+}
+.agree-name>span{
+  font-weight: bold;
+}
+.agree-explain{
+  height: 200px;
+  margin: 15px auto;
+  padding: 10px;
+  border: 1px solid black;
+  overflow: auto;
+  box-sizing: border-box;
+  font-size: 13px;
+  font-weight: 350;
+}
+.agree-check{
+  /* height: 19px; */
+  width: 540px;
+  margin: 0 auto;
+  text-align: right;
+  /* background-color: antiquewhite; */
+}
+.__web-inspector-hide-shortcut__{
+  margin: 0px;
+}
+.agree-button-box{
+  text-align: center;
+  margin: 0 auto;
+  padding: 30px;
+}
+button{
+  background-color: darkblue;
+  color: white;
+  font-size: large;
+  width: 200px;
+  height: 40px;
+  cursor: pointer;
+  border: hidden;
+}

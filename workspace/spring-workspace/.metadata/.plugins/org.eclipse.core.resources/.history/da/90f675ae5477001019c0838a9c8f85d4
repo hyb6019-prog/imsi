@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.photo-write-wrap{
+		width: 1000px;
+		margin: 0 auto;
+		
+	}
+	.photo-write-wrap .input-item>input[type=text]{
+		padding: 0;
+		border-bottom: none;
+	}
+</style>
+</head>
+<body>
+	<th:block th:include="common/header"></th:block>
+	<main class="content">
+		<section class="section photo-write-wrap">
+			<div class="page-title">사진게시판 글쓰기</div>
+			<form action="/photo/write" method="post" enctype="multipart/form-data">
+				<table class="tbl">
+					<tr>
+						<th>제목</th>
+						<td colspan="3">
+							<div class="input-item">
+								<input type="text" name="photoTitle">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th style="width:20%;">작성자</th>
+						<td style="width:30%;">
+							<span th:text="${session.member.memberId}"></span>
+							<input type="hidden" name="photoWriter" th:value="${session.member.memberId}">
+						</td>
+						<th style="width:20%;">썸네일</th>
+						<td style="width:30%;">
+							<input type="file" name="imageFile">
+						</td>
+					</tr>
+				</table>
+			</form>
+		</section>
+	</main>
+	<th:block th:include="common/footer"></th:block>
+</body>
+</html>

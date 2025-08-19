@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>메모 상세보기</h3>
+	<hr>
+		<table border="1">
+			<tr>
+				<th>메모번호</th>
+				<td th:text="${m.memoId}"></td>
+			</tr>
+			<tr>
+				<th>제목</th>
+				<td th:text="${m.memoTitle}"></td>
+			</tr>
+			<tr>
+				<th>작성자</th>
+				<td th:text="${m.memoWriter}"></td>
+			</tr>
+			<tr>
+				<th>작성일</th>
+				<td th:text="${m.writeDate}"></td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td th:text="${m.memoContent}"></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<a th:href="@{modifyFrm(memoId=${m.memoId})}">수정</a>
+					<a th:href="@{deleteMemo(memoId=${m.memoId})}">삭제</a>
+				</td>
+			</tr>
+		</table>
+</body>
+</html>

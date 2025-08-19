@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스타일 적용</title>
+  <style>
+    /*
+    주석
+
+    태그선택{
+        디자인
+    }
+    */
+    h2{
+        color: crimson;                       /*글씨색 변경*/
+        background-color: cornflowerblue;     /*배경색 변경*/
+    }
+  </style>
+  <link rel="stylesheet" href="css/test.css"><!-- 외부 시트 연결 -->
+</head>
+<body>
+  <!-- 1. 인라인 스타일 (태그의 style속성에 디자인을 하는 방법)-->
+  <h1 style="color: blue; background-color: burlywood;">h1</h1>
+  <!-- 2. 내부 스타일 시트 적용(html문서 내에 <style></>을 선언하고 내부에 디자인을 적용)-->
+  <h2>h2</h2>
+  <!-- 3. 외부 스타일 시트 적용(스타일시트 파일을 생성하고, 연결해서 사용)-->
+  <h3>h3</h3>
+  <h1 style="color: blue; background-color: burlywood;">h11111111</h1>
+  <h2>h222222222222222222</h2><!-- head에 만들어놓아서 자동적용됨 -->
+</body>
+</html>

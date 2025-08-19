@@ -1,0 +1,13 @@
+http://127.0.0.1:5500/test1.html
+? : 파라미터 구분자
+idid=user01
+&
+pwpw=1234
+
+pretenderd xxx
+
+<header>
+      <div>
+        <div>인기 영화 top3</div>
+      </div>
+    </header>

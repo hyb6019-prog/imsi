@@ -1,0 +1,67 @@
+/*일반 구조 선택자*/
+.div1>p:first-child{
+  background-color: tomato;
+  color: white;
+}
+.div1>p:last-child{
+  background-color: blueviolet;
+  color: white;
+}
+.div1>p:nth-child(2n){
+  background-color: crimson;
+  color: white;
+}
+.div1>p:nth-last-child(2){
+  background-color: turquoise;
+  color: white;
+}
+
+/*형태 구조 선택자*/
+.div2>p:first-of-type{
+  background-color: tomato;
+  color: white;
+}
+.div2>p:last-of-type{
+  background-color: blueviolet;
+  color: white;
+}
+.div2>p:nth-of-type(2n){
+  background-color: crimson;
+  color: white;
+}
+.div2>p:nth-last-of-type(3){
+  background-color: turquoise;
+  color: white;
+}
+
+/*문자 선택자*/
+.div3>p::first-line{
+  background-color: aquamarine;
+}
+.div3>p::selection{
+  background-color: red;
+  color: white;
+}
+
+.div4>p:not(.test3){
+  background-color: bisque;
+}
+
+/*****************************************/
+
+p.aaa{
+  color: cadetblue;
+}
+#aaa,.bbb{
+  background-color: blue;
+}
+#ddd{
+  color: coral;
+}
+.fff{
+  color: blue;
+  background-color: bisque;
+}
+.ccc{
+  color: red;
+}

@@ -1,0 +1,21 @@
+package kr.co.iei.notice.model.vo;
+
+import org.apache.ibatis.type.Alias;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Alias(value="noticeComment")
+public class NoticeComment {
+	private int noticeCommentNo;
+	private String noticeCommentWriter;
+	private String noticeCommentContent;
+	private String noticeCommentDate;
+	private int noticeRef;
+	private int noticeCommentRef;
+	private int likeCount;
+}

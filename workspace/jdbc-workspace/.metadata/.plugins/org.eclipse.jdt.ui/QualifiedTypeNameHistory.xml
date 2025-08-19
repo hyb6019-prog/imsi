@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.sun.tools.javac.launcher.Main"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.sql.Statement"/>
+    <fullyQualifiedTypeName name="java.lang.reflect.Member"/>
+    <fullyQualifiedTypeName name="kr.co.iei.member_model.dao.MemberDao"/>
+    <fullyQualifiedTypeName name="kr.co.iei.member_model.vo.Member"/>
+    <fullyQualifiedTypeName name="kr.co.iei.member_controller.MemberController"/>
+    <fullyQualifiedTypeName name="java.lang.Class"/>
+    <fullyQualifiedTypeName name="kr.co.iei.member.controller.MemberController"/>
+    <fullyQualifiedTypeName name="kr.co.iei.member.service.MemberService"/>
+    <fullyQualifiedTypeName name="kr.co.iei.member.model.dao.MemberDao"/>
+    <fullyQualifiedTypeName name="kr.co.iei.member.model.vo.Member"/>
+    <fullyQualifiedTypeName name="jdbc_memo_controller.MemoController"/>
+    <fullyQualifiedTypeName name="jdbc_memo_service.MemoService"/>
+    <fullyQualifiedTypeName name="jdbc_memo_model.dao.MemoDao"/>
+    <fullyQualifiedTypeName name="jdbc_memo_model.vo.Memo"/>
+    <fullyQualifiedTypeName name="sun.net.ConnectionResetException"/>
+    <fullyQualifiedTypeName name="oracle.net.aso.f"/>
+    <fullyQualifiedTypeName name="kr.co.iei.member.medel.dao.MemberDao"/>
+    <fullyQualifiedTypeName name="com.sun.net.httpserver.Authenticator.Result"/>
+    <fullyQualifiedTypeName name="java.sql.JDBCType"/>
+    <fullyQualifiedTypeName name="kr.co.iei.member.controller.Controller"/>
+    <fullyQualifiedTypeName name="java.security.Provider.Service"/>
+    <fullyQualifiedTypeName name="kr.co.iei.member.medel.service.MemberService"/>
+    <fullyQualifiedTypeName name="kr.co.iei.member.medel.vo.Member"/>
+    <fullyQualifiedTypeName name="kr.co.iei.member.common.JDBCTemplate"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="kr.co.iei.memo_service.MemoService"/>
+    <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="kr.co.iei.common.Common"/>
+    <fullyQualifiedTypeName name="kr.co.iei.model.dao.MemoDao"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="kr.co.iei.model.vo.Memo"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="sun.jvm.hotspot.tools.FinalizerInfo"/>
+    <fullyQualifiedTypeName name="kr.co.iei.controller.Controller"/>
+    <fullyQualifiedTypeName name="jdbc.member.controller.MemberController"/>
+    <fullyQualifiedTypeName name="jdbc.common.JDBCTemplate"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,79 @@
+/*폰트 설정*/
+@font-face {
+  font-family: nn-r;
+  src: url(../Nanul_Gothic/);
+}
+/* 기본 세팅 */
+*{
+  margin: 0;
+  padding: 0;
+  /* font-family: nn; */
+  color: #1e1e1e;
+}
+.agree-all-wrap{
+  background-color: #ddd;
+  padding: 80px;
+}
+.agree-wrap{
+  background-color: #fff;
+  width: 800px;
+  margin: 0 auto; /*블록은 이걸로 가운데 정렬*/
+  border-radius: 12px;
+}
+
+.agree-title>h1{
+  font-size: 36px;
+  text-align: center;
+  color: #039;
+  /* font-family: ; 볼드체 사용*/
+  padding: 25px;
+}
+.agree-title>h3{
+  /* font-family: ; 그냥 볼드체 */
+  text-align: center;
+  padding: 15px;
+}
+.agree-content{
+  width: 600px;
+  margin: 25px auto;
+}
+.agree-name{
+  
+}
+.agree-name>img{
+  width: 20px;
+}
+.agree-name>span{
+  font-weight: bold;
+}
+.agree-explain{
+  width: 90%;
+  margin: 15px auto;
+  height: 200px;
+  overflow-y: auto; /*컨텐츠가 넘치면 스크롤 생성*/
+  border : 1px solid #1e1e1e;
+  font-size: 12px;
+  box-sizing: border-box;/*이게 있어야 패딩값이 안쪽에 생김*/
+  padding: 10px;
+}
+.agree-check{
+  text-align: right;
+  width: 90%;
+  margin: 0 auto;
+  
+}
+.agree-btn-box{
+  text-align: center;
+  padding: 20px;
+}
+.agree-btn-box>button{
+  width: 200px;
+  height: 40px;
+  border: none;
+  background-color: darkblue;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  /*블록이면 마진으로 정렬 인라인/인라인블록이면 ekfms*/
+  
+}

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kr.co.iei.notice.model.dao.NoticeDao">
+
+	<select id="selectNoticeList" resultType="notice">
+		SELECT *
+			FROM (
+			    SELECT rownum AS rnum, n.*
+			    FROM (
+			        SELECT notice_no, notice_title, notice_writer, reg_date
+			        FROM notice
+			        ORDER BY notice_no DESC
+			    ) n
+			)
+			WHERE #{start} <![CDATA[ <= ]]> rnum and rnum <![CDATA[ <= ]]> #{end}
+	</select>
+		
+	
+	<select id="selectNoticeTotalCount" resultType="int">
+		select count(*) from notice
+	</select> 
+	 
+	<insert id="insertNotice">
+		insert into notice values(#{noticeNo}, #{noticeTitle}, #{noticeWriter}, #{noticeContent}, to_char(sysdate, 'yyyy-mm-dd'))
+	</insert>
+	
+	<insert id="insertNoticeFile">
+		insert into notice_file
+		values(notice_file_seq.nextval, #{noticeNo}, #{filename}, #{filepath})
+	</insert>
+	
+	<select id="getNoticeNo" resultType="int">
+		select notice_seq.nextval from dual
+	</select>
+	
+	<select id="selectOneNotice" resultType="notice">
+		select * from notice where notice_no = #{noticeNo}
+	</select>
+	
+	<select id="selectNoticeFile" resultType="noticeFile">
+		select * from notice_file where notice_no = #{noticeNo}
+	</select>
+	
+	<select id="selectOneNoticeFile" resultType="noticeFile">
+		select * from notice_file where notice_file_no = #{noticeFileNo}
+	</select>
+	
+	<update id="updateNotice">
+		update notice set
+			notice_title = #{noticeTitle},
+			notice_content = #{noticeContent}
+		where
+			notice_no = #{noticeNo}
+	</update>
+	
+	<delete id="deleteNoticeFile">
+		delete from notice_file where notice_file_no = #{noticeFileNo}
+	</delete>
+	
+	<delete id="deleteNotice">
+		delete from notice where notice_no = #{noticeNo}
+	</delete>
+	
+	<select id="selectNoticeFileList" resultType="noticeFile">
+		select *
+		from notice_file
+		where notice_file_no in
+		<foreach collection="array" item="noticeFileNo" open="(" close=")" separator=",">
+			#{noticeFileNo}
+		</foreach>
+		
+	</select>
+	
+	<insert id="insertNoticeComment">
+		insert into notice_comment values(
+			notice_comment_seq.nextval,
+			#{noticeCommentWriter},
+			#{noticeCommentContent},
+			to_char(sysdate, 'yyyy-mm-dd'),
+			#{noticeRef},
+			<if test="noticeCommentRef == 0">
+				null
+			</if>
+			<if test="noticeCommentRef != 0">
+				#{noticeCommentRef}
+			</if>
+		)
+	</insert>
+	
+	<select id="selectNoticeCommentList" resultType="noticeComment">
+		select * from notice_comment where notice_ref = #{noticeNo}
+	</select>
+	
+	<update id="updateNoticeComment">
+		update notice_comment set
+			notice_comment_content = #{noticeCommentContent}
+		where
+			notice_comment_no = #{noticeCommentNo}
+	</update>
+	
+	<delete id="deleteNoticeComment">
+		delete from notice_comment where notice_comment_no = #{noticeComment}
+	</delete>
+	
+	<insert id="insertNoticeCommentLike">
+		insert into notice_comment_like values(#{noticeCommentNo}, #{memberNo})
+	</insert>
+	
+	<select id="selectNoticeCommentLikeCount" resultType="int">
+		select count(*) from notice_comment_like where notice_comment_no = #{noticeCommentNo}
+	</select>
+	
+	<select id="selectNoticeCommentIsLike" resultType="int">
+		select count(*) from notice_comment_like 
+		where notice_comment_no = #{noticeCommentNo} and member_no = #{memberNo}
+	</select>
+	
+	<delete id="deleteNoticeCommentLike">
+		delete from notice_comment_like 
+		where notice_comment_no = #{noticeCommentNo} and member_no = #{memberNo}
+	</delete>
+	
+	<select id="selectNoticeCommentListNew" resultType="noticeComment">
+		select  
+    notice_comment_no,
+    notice_comment_writer,
+    notice_comment_content,
+    notice_comment_date,
+    notice_ref,
+    notice_comment_ref,
+    (select count(*) from notice_comment_like where notice_comment_no = nc.notice_comment_no) as like_count,
+    (select count(*) from notice_comment_like where notice_comment_no = nc.notice_comment_no and member_no=#{memberNo} as is_like
+from notice_comment nc where notice_ref = #{noticeCommentNo};
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+.linear{
+  width: 200px;
+  height: 200Px;
+  border: 1px solid black;
+}
+.gra1{
+  background: linear-gradient(#0000ff, #ffffff); /*위에서 아래로 색상이 옅어지는 것*/
+}
+.gra2{
+  background: linear-gradient(to right, #0000ff, #ffffff);/*top left bottom도 있음*/
+}
+.gra3{
+  background: linear-gradient(45deg, #0000ff, #ffffff);
+}
+.gra4{
+  background: linear-gradient(90deg,#0000ff,#00ff00 30%,#00ffff 60%,#ffffff);
+}
+.gra5{
+  background: repeating-linear-gradient(90deg, #0000ff,#ffffff 20%);
+}
+.gra6{
+  background: #ee0979;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #ff6a00, #ee0979);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #ff6a00, #ee0979); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.circle{
+  width: 300px;
+  height: 200px;
+  border: 1px solid black;
+}
+.gra7{
+  background: radial-gradient(#ffffff, #0000ff); /*중심부터 타원을 채워나감(default)*/
+}
+.gra8{
+  background: radial-gradient(circle, #ffffff, #0000ff); /*중심부터 원을 채워나감*/
+}
+.gra9{
+  /*-webkit-크롬 브라우저 최적화*/
+  background: -webkit-radial-gradient(30% 40% ,circle, #ffffff, #0000ff);
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.join-wrap{
+		width: 500px;
+		margin: 0 auto;
+		padding: 20px;
+	}
+	.join-wrap .input-wrap{
+		padding: 15px 30px;
+	}
+	.join-button-box{
+		padding: 20px 30px;
+	}
+	.join-button-box>button{
+		width: 100%
+	}
+</style>
+</head>
+<body>
+	<th:block th:include="common/header"></th:block>
+	<main class="content">
+		<section class="section join-wrap">
+			<div class="page-title">회원가입</div>
+			
+			<form action="/member/checkId" name="checkIdFrm" method="get">
+				<input type="hidden" name="checkId">
+			</form>
+			
+			<form action="/member/join" method="post" autocomplete="off">
+			
+				<div class="input-wrap">
+					<div class="input-title">
+						<label for="memberId">아이디</label>
+					</div>
+					<div class="input-item">
+						<input type="text" name="memberId" id="memberId">
+						<button type="button" class="btn-primary id-check-btn">중복체크</button>
+					</div>
+					<p class="input-msg id-check-msg"></p>
+				</div>
+				
+				<div class="input-wrap">
+					<div class="input-title">
+						<label for="memberPw">비밀번호</label>
+					</div>
+					<div class="input-item">
+						<input type="password" name="memberPw" id="memberPw">
+					</div>
+				</div>
+				
+				<div class="input-wrap">
+					<div class="input-title">
+						<label for="memberPwRe">비밀번호 확인</label>
+					</div>
+					<div class="input-item">
+						<input type="password" name="memberPwRe" id="memberPwRe">
+					</div>
+					<p class="input-msg pw-check-msg"></p>
+				</div>
+				
+				<div class="input-wrap">
+					<div class="input-title">
+						<label for="memberName">이름</label>
+					</div>
+					<div class="input-item">
+						<input type="text" name="memberName" id="memberName">
+					</div>
+				</div>
+				
+				<div class="input-wrap">
+					<div class="input-title">
+						<label for="memberPhone">전화번호</label>
+					</div>
+					<div class="input-item">
+						<input type="text" name="memberPhone" id="memberPhone">
+					</div>
+				</div>
+				
+				<div class="input-wrap">
+					<div class="input-title">
+						<label for="memberAddr">주소</label>
+					</div>
+					<div class="input-item">
+						<input type="text" name="memberAddr" id="memberAddr">
+					</div>
+				</div>
+				
+				<div class="join-button-box">
+					<button type="submit" class="btn-primary lg">회원가입</button>
+				</div>
+				
+			</form>
+		</section>
+	</main>
+	<script>
+		$("#memberPwRe").on("keyup",function(){
+			$(".pw-check-msg").removeClass("valid").removeClass("invalid");
+			const inputPw = $("#memberPw").val();
+			const inputPwRe = $("#memberPwRe").val();
+			if(inputPw === inputPwRe){
+				$(".pw-check-msg").text("비밀번호가 일치합니다.");
+				$(".pw-check-msg").addClass("valid");
+			}else{
+				$(".pw-check-msg").text("비밀번호가 일치하지 않습니다");
+				$(".pw-check-msg").addClass("invalid");
+			}
+		});
+		$(".id-check-btn").on("click", function(){
+			const idCheckMsg = $(".id-check-msg");
+			idCheckMsg.removeClass("valid").removeClass("invalid");
+			// 입력한 아이디를 가져옴
+		    const memberId = $("#memberId").val();
+			//가져온아이디를 DB에서 사용중인지 체크(비동기요청)
+			$.ajax({
+				url : "/member/ajaxCheckId",
+				type : "get",
+				data : {memberId : memberId},
+				success : function(result){
+					if(result === 0){
+						$(".id-check-msg").text("사용 가능한 아이디입니다.");
+						$(".id-check-msg").addClass("valid");
+					}else if(result === 1){
+						$(".id-check-msg").text("이미 사용중인 아이디입니다..");
+						$(".id-check-msg").addClass("valid");
+					}
+				},
+				error : function(){
+					console.log("에러");
+				}
+			});
+		});
+		/*
+		$(".id-check-btn").on("click", function() {
+			const idCheckMsg = $(".id-check-msg");
+			idCheckMsg.text("아이디 중복체크를 진행하세요");
+			idCheckMsg.removeClass("valid").removeClass("invalid");
+			idCheckMsg.addClass("invalid");
+			
+		    // 입력한 아이디를 중복체크용 input에 대입
+		    const memberId = $("#memberId").val();
+		    $("[name=checkId]").val(memberId);     
+		    
+		    //window.open(param1,param2,param3)
+		    //param1 : 새창에서 띄울 페이지, param2 : 새창의 이름, param3 : 새창 옵션
+		    window.open("","checkId","width=600,height=300");
+		    
+		    //아이디 중복체크용 form과 방금새로열린 창을 연동
+		    $("[name=checkIdFrm]").attr("target", "checkId");
+		    
+		    //form태그 전송
+		    $("[name=checkIdFrm]").submit();
+		});
+		*/
+		$(".join-button-box>button").on("click", function(e){
+			const valid = $(".valid");
+			if(valid.length !== 2){
+				alert("똑바로 입력해!!!");
+				e.preventDefault();//기본이벤트 제거(submit이벤트 제거)
+			}
+		});
+	</script>
+	<th:block th:include="common/footer"></th:block>
+</body>
+</html>

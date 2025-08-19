@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 회원가입</title>
+    <link rel="stylesheet" href="css/00_실습03_회원가입2.css">
+</head>
+<body>
+  <div class="join-all-wrap">
+    <div class="join-wrap">
+      <div class="join-title">
+        <h1>A-Class</h1>
+        <h3>회원가입</h3>
+        <div class="join-content">
+        <form action="join.html"method="post">
+          <div class="join-input-wrap">
+            <div>
+              <label for="id">아이디<sup>*</sup></label>
+            </div>
+            <div>
+              <input type="password" name="id" id="id">
+              <button class="dup-btn" type="button">중복체크</button>
+            </div>
+          </div>
+          <div class="join-input-wrap">
+          <div>
+              <label for="pw">비밀번호<sup>*</sup></label>
+          </div>
+            <div>
+                <input type="password" name="pw" id="pw">
+            </div>
+          </div>
+          <div class="join-input-wrap">
+              <div>
+                  <label for="pwRe">비밀번호 확인</label>
+              </div>
+              <div>
+                  <input type="password" name="pwRe" id="pwRe">
+              </div>
+          </div>
+          <div class="join-input-wrap">
+              <div>
+                  <label for="name">이름<sup>*</sup></label>
+              </div>
+              <div>
+                  <input type="password" name="name" id="name">
+              </div>
+          </div>
+          <div class="join-input-wrap">
+            <div>
+              <label>성별</label>
+            </div>
+            <div class="gender-div">
+              <input type="radio" name="gender" id="m" value="m">
+              <label for="m">남자</label>
+              <input type="radio" name="gender" id="f" value="f">
+              <label for="f">여자</label>
+            </div>
+            <div class="join-input-wrap">
+              <div>
+                  <label for="email">이메일<sup>*</sup></label>
+              </div>
+              <div>
+                <input type="text" name="email" id="email">
+                <span class="mail-center">@</span>
+                <input type="text" name="email2" id="email2">
+                <select class="email-choice">
+                  <option value="">직접입력</option>
+                  <option value="naver.com">네이버</option>
+                  <option value="google.com">구글</option>
+                  <option value="iei.or.kr">KH</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<div>
+    <div></div>
+</div>
+</body>
+</html>

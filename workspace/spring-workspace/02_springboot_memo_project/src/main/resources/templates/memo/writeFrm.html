@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>메모 작성</h3>
+	<hr>
+	<form action="/memo/memoWrite" method="post">
+		<table>
+			<tr>
+				<th>제목</th>
+				<td>
+					<input type="text" name="memoTitle">
+				</td>
+			</tr>
+			<tr>
+				<th>작성자</th>
+				<td>
+					<input type="text" name="memoWriter">
+				</td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td>
+					<textarea name="memoContent"></textarea>
+				</td>		
+			</tr>
+			<tr>
+				<td>
+					<input type="submit" value="작성하기">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

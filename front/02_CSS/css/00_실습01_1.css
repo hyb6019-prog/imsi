@@ -1,0 +1,89 @@
+.login-wrap{
+  width: 1200px;
+  /* border: 1px solid black; */
+}
+.login-header{
+  padding-bottom: 30px;
+}
+.login-content{
+  /* height: 100px; */
+  /* background-color: cadetblue; */
+  border-top: 1px solid #e94822;
+  border-bottom: 1px solid #e94822;
+  padding: 50px 0px;
+}
+.login-header>*{
+  margin: 0px;
+  text-align: center;  /*글씨 가운데 정렬*/
+}
+.login-header>h2{
+  font-weight: 400;
+  font-size: 40px;
+  /* background-color: blue; */
+  padding-bottom: 15px;
+}
+.login-header>h3{
+  color: #c4b493;
+  /* background-color: green; */
+  
+}
+/*padding으로 쓰면 요소자체 크기가 커짐 / margin으로 쓰면 요소 사이 빈 터미널이 생김*/
+#login-frm{
+  width: 400px;
+  /* border: 1px dashed red; */
+  overflow: hidden;
+  margin: 0 auto;
+}
+.input-box{
+  width: 270px;
+  height: 100px;
+  /* background-color: chartreuse; */
+  float: left;
+}
+.btn-box{
+  width: 130px;
+  height: 100px;
+  /* background-color: darkblue; */
+  float: left;
+  text-align: center;
+}
+.input-box>input{
+  width: 270px;
+  height: 45px;
+  box-sizing: border-box;
+  outline: none;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  padding-left: 10px;
+}
+.input-box>input[name=id]{
+  margin-bottom: 10px;
+}
+.btn-box>input{
+  width: 100px;
+  height: 100px;
+  background-color: #e94822;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 4px;
+  font-weight: 900;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.link-wrap{
+  width: 400px;
+  /* background-color: antiquewhite; */
+  margin: 0 auto;
+  padding-top: 20px;
+  text-align: right;
+}
+.link-wrap>a{
+  margin-right: 15px;
+  text-decoration: none;
+  color: black;
+}
+.link-wrap>a:hover{
+  color: #e94822;
+}

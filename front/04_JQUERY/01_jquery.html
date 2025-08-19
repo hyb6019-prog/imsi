@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <style>
+    .test{
+      width: 500px;
+    }
+    .test *{
+      display: block;
+      border: 2px solid lightgray;
+      padding: 5px;
+      margin: 15px;
+      color: lightgrey;
+    }
+  </style>
+</head>
+<body>
+  <h1>jQuery 기본개요</h1>
+  <hr>
+  <h2>jQuery는 dom객체 선택 시 css선택자를 사용</h2>
+  
+  <p id="p1" onclick="func1();">인라인방식</p>
+  <p class="p">클래스처리1</p>
+  <p class="p">클래스처리2</p>
+  <p class="p">클래스처리3</p>
+  <button onclick="func2();">클릭</button>
+  <hr>
+  <h2>객체 탐색</h2>
+  <h3 class="pp1">선택자로 선택된 요소들 중 특정요소만 선택하기위해서 한번 더 필터링 하는 함수</h3>
+  <h3>1. 선택된 요소 중 직접 필터링 : first, last, eq, filter, not </h3>
+  <div class="filter">
+    <p class="pp1">p-1</p>
+    <p class="pp1">p-2</p>
+    <p class="pp3">p-3</p>
+    <p class="pp4">p-4</p>
+  </div>
+  <button onclick="func3();">필터링테스트</button>
+  <hr>
+  <h3>2. 선택된 요소의 상위요소(부모요소)를 선택할 수 있는 함수 : parent, parents, parentsUntil</h3>
+  <div class="test ancestors">
+    <div>div(graet-grand-parent)
+      <ul>ul(grand-parent)
+        <li>li(direct-parent)
+          <span>span</span>
+        </li>
+      </ul>
+    </div>
+    <div>div(grand-parent)
+      <p>p((direct-parent))
+        <span>span</span>
+      </p>
+    </div>
+  </div>
+  <button onclick="func4();">parent</button>
+  <button onclick="func5();">parents</button>
+  <button onclick="func6();">parentsUntil</button>
+  <button onclick="func16();">test</button>
+  <h3>3. 선택된 요소의 하위요소(자손,후손)들을 선택할 수 있는 함수 : chilrend, find</h3> 
+  <div class="test descendants">
+    div(current-element)
+    <p class="child1">p(child)
+      <span class="child1">span(grand-child)</span>
+    </p>
+    <ul class="child2">ul(child)
+      <li>li(grand-child)
+        <p>p(great-grand-child)
+          <span>span(great-great-grand-child)</span>
+        </p>
+      </li>
+    </ul>
+  </div> 
+  <button onclick="func7();">children</button>
+  <button onclick="func8();">children</button>
+  <hr>
+  <h3>4. 선택된 요소들과 같은레벨(형제)을 선택할 수 있는 함수 : siblings, next, nextUntil, prev, prevAll, prevUntil</h3>
+  <div class="test siblings">
+    <div>div(parent)
+      <p>p</p>
+      <span>span</span>
+      <h2>h2</h2>
+      <h3>h3(current-element)</h3>
+      <h4>h4</h4>
+      <h5>h5</h5>
+      <h6>h6</h6>
+      <p>p</p>
+    </div>
+  </div>
+  <button onclick="func9();">siblings</button>
+  <button onclick="func10();">next</button>
+  <button onclick="func11();">nextAll</button>
+  <button onclick="func12();">nextUntil</button>
+  <button onclick="func13();">prev</button>
+  <button onclick="func14();">prevAll</button>
+  <button onclick="func15();">prevUntil</button>
+
+
+  <script src="js/01_default.js"></script>
+</body>
+</html>

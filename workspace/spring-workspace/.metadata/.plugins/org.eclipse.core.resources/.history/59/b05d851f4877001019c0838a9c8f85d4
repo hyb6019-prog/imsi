@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.ajax-wrap{
+		width: 800px;
+		margin: 0 auto;
+		
+	}
+	.ajaxResult{
+		margin-top: 10px;
+		min-height: 100px;
+		border : 1px solid var(--gray5);
+	}
+</style>
+</head>
+<body>
+	<th:block th:include="common/header"></th:block>
+	<main class="content">
+		<section class="section ajax-wrap">
+			<div class="page-title">AJAX</div>
+			
+			<h3>1. 서버 호출하기</h3>
+			<button class="btn-point" id="ajax1">서버 호출하기</button>
+			
+			<h3>2. 서버 호출하고 서버에서 전송한 데이터 받기</h3>
+			<button class="btn-point" id="ajax2">데이터 받기</button>
+			
+			<h3>3. 서버에 데이터를 전송하고 결과받기(기본형)</h3>
+			<input type="text" id="su1">
+			+
+			<input type="text" id="su2">
+			<button class="btn-point" id="ajax3">더하기</button>
+			<p class="ajaxResult" id="result3"></p>
+			
+			<h3>4. 서버에 데이터를 전송하고 결과받기(객체)</h3>
+			<input type="text" id="input4" placeholder="아이디입력">
+			<button class="btn-point" id="ajax4">회원정보조회</button>
+			<p class="ajaxResult" id="result4"></p>
+			
+			<h3>5. 서버에서 결과받기(배열,리스트)</h3>
+			<button class="btn-point" id="ajax5">전체회원조회</button>
+			<p class="ajaxResult" id="result5"></p>
+			
+			<h3>6. 서버에서 데이터를 전송하고 결과받기(객체)</h3>
+			<input type="text" id="input6" placeholder="아이디입력">
+			<button class="btn-point" id="ajax6">회원정보조회</button>
+			<p class="ajaxResult" id="result6"></p>
+			
+		</section>
+	</main>
+	<script>
+// 		console.log("비동기 요청 호출 전");
+		$("#ajax1").on("click", function(){
+			//비동기 요청 전송 방식
+			// -> $.ajax({key1:value1, key2:value2,...})
+			$.ajax({
+				url : "/etc/ajax1",				//form action 역할
+				type : "get",					//form method 역할 /안 적으면 디폴트가 get
+				success : function(){			//비동기요청이 성공적으로 끝나면 실행되는 함수 / 서버에서 요청이 성공적으로 끝나면 실행되는 함수
+					console.log("서버에서 요청이 성공적으로 끝나면 실행되는 함수");
+				},
+				error : function(){				//비동기요청 처리 중 에러가 발생하면 실행되는 함수 / 서버 요청 처리 중 에러발생하면 실행되는 함수
+					console.log("서버 요청 처리 중 에러발생하면 실행되는 함수");
+				},
+				complete : function(){			//비동기요청 처리가 끝나면 성공/실패여부와 상관없이 무조건 실행되는 함수 / 성공이든 실패든 끝나면 무조건 실행되는 함수
+					console.log("성공이든 실패든 끝나면 무조건 실행되는 함수");
+				}
+			});
+			console.log("비동기 요청 호출 후");
+		});
+		
+		$("#ajax2").on("click", function(){
+			$.ajax({
+				url : "/etc/ajax2",
+				type : "get",
+				success : function(data){
+					//success : function(){} -> ajax요청이 성공적으로 처리되면 실행되는 함수
+					//function(data){} -> success 콜백함수의 첫번재 매개변수가 서버에서 실행되는 함수
+					console.log("성공");
+					console.log(data);
+				},
+				erroe : function(){
+					console.log("실패");
+				},
+			})
+		});
+		
+		$("#ajax3").on("click", function(){
+			const su1 = $("#su1").val();
+			const su2 = $("#su2").val();
+			console.log(su1,su2);
+			//ajax 요청 시 데이터를 전송하는 방법은 data 속성에 객체형태로 데이터를 설정
+			$.ajax({
+				url : "/etc/ajax3",
+				type : "get",
+				data : {su1:su1, num2:su2},			//자바스크립트객체형태로전송
+				success : function(result){
+					console.log("성공");
+					console.log(result);
+					
+// 					const resultString = su1 + " + " + su2 + " = " + result;
+					const resultString = `${su1} + ${su2} = ${result}`;
+					$("#result3").text(resultString);
+				},
+				error : function(){
+					console.log("실패");
+				}
+			});
+		});
+		
+		$("#ajax4").on("click", function(){
+			const memberId = $("#input4").val();
+			console.log(memberId);
+			$("#result4").empty();	//안쪽에 있는값 비우기/누를때마다 새로 비우고 시작
+			$.ajax({
+				url : "/etc/ajax4",
+				type : "get",
+				data : {memberId : memberId},
+				dataType : "json", 				//결과로 받은 문자열을 객체로 변환해줘
+				success : function(member){
+					console.log(member, typeof member);
+					/*
+					//자바스크립트에서 문자열을 자바스크립트 객체타입으로 변환
+					const m = JSON.parse(member); //문자열로 받은 값을 자바스크립트 객체로 변환
+					console.log(m);
+					console.log("성공");
+					*/
+					
+					$("#result4").append("<p>회원번호 : "+member.memberNo+"</p>");
+					$("#result4").append("<p>아이디 : "+member.memberId+"</p>");
+					$("#result4").append("<p>비밀번호 : "+member.memberPw+"</p>");
+					$("#result4").append("<p>이름 : "+member.memberName+"</p>");
+					$("#result4").append("<p>전화번호 : "+member.memberPhone+"</p>");
+					$("#result4").append("<p>주소 : "+member.memberAddr+"</p>");
+					$("#result4").append("<p>회원등급 : "+member.memberLevel+"</p>");
+					$("#result4").append("<p>가입일 : "+member.enrollDate+"</p>");
+				},
+				error : function(){
+					console.log("에러");
+				}
+			});
+		});
+		
+		$("#ajax5").on("click", function(){
+		    $.ajax({
+		        url : "/etc/ajax5",
+		        type : "get",
+		        dataType : "json",
+		        success : function(result){
+		            // result가 JSON 배열이라고 가정
+		            for(let i = 0; i < result.length; i++){
+		                const ul = $("<ul>");
+		                ul.append("<li>"+result[i].memberNo+"</li>");
+		                ul.append("<li>"+result[i].memberId+"</li>");
+		                ul.append("<li>"+result[i].memberName+"</li>");
+		                ul.append("<li>"+result[i].memberPhone+"</li>");
+		                $("#result5").append(ul);
+		            }
+		        },
+		        error : function(){
+		            console.log("실패");
+		        }
+		    });
+		});
+		
+		$("#ajax6").on("click", function(){
+			const memberId = $("#input6").val();
+			console.log(memberId);
+			$("#result6").empty();	//안쪽에 있는값 비우기/누를때마다 새로 비우고 시작
+			$.ajax({
+				url : "/etc/ajax6",
+				type : "get",
+				data : {memberId : memberId},
+				success : function(member){
+					console.log(member, typeof member);
+					/*
+					//자바스크립트에서 문자열을 자바스크립트 객체타입으로 변환
+					const m = JSON.parse(member); //문자열로 받은 값을 자바스크립트 객체로 변환
+					console.log(m);
+					console.log("성공");
+					*/
+					
+					$("#result4").append("<p>회원번호 : "+member.memberNo+"</p>");
+					$("#result4").append("<p>아이디 : "+member.memberId+"</p>");
+					$("#result4").append("<p>비밀번호 : "+member.memberPw+"</p>");
+					$("#result4").append("<p>이름 : "+member.memberName+"</p>");
+					$("#result4").append("<p>전화번호 : "+member.memberPhone+"</p>");
+					$("#result4").append("<p>주소 : "+member.memberAddr+"</p>");
+					$("#result4").append("<p>회원등급 : "+member.memberLevel+"</p>");
+					$("#result4").append("<p>가입일 : "+member.enrollDate+"</p>");
+				},
+				error : function(){
+					console.log("에러");
+				}
+			});
+		});
+		
+	</script>
+	<th:block th:include="common/footer"></th:block>
+</body>
+</html>
+
+
+
+
+
+
+

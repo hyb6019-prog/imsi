@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.address-wrap{
+		width:500px;
+	}
+</style>
+</head>
+<body>
+	<th:block th:include="common/header"></th:block>
+	<main class="content">
+		<section class="section">
+			<div class="page-title">지도 API</div>
+			<h2>1. 주소찾기 API</h2>
+			<div class="address-wrap">
+				<div class="post-code-wrap">
+					<div class="input-item">
+						<input type="text" name="postcode" id="postcode" readonly>
+						<button class="btn-primary" id="search-btn">주소찾기</button>
+					</div>
+				</div>
+				<div class="detail-address-wrap">
+					<div class="input-item">
+						<input type="text" name="address" id="address" readonly>
+					</div>
+					<div class="input-item">
+						<input type="text" name="detail-address" id="detail-address">
+					</div>
+				</div>
+			</div>
+			<h2>네이버지도</h2>
+			<div id="map" style="width:100%; height:500px;"></div>
+		</section>
+	</main>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=iagv1ff1d5"></script>
+	<script>
+		$("#search-btn").on("click", function(){
+			 new daum.Postcode({
+			        oncomplete: function(data) {
+			            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+			            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+			            console.log(data);
+			            $("#postcode").val(data.zonecode);
+			            $("#address").val(data.roadAddress);
+			            $("#detail-address").focus();
+			        }
+			    }).open();
+		});
+		
+		const mapDiv = document.getElementById("map");
+		
+		
+		const map = new naver.maps.Map(mapDiv, {
+			center : new naver.maps.LatLng(37.4505192, 126.6629272),
+			zoom : 17, //default : 16
+			zoomControl : true,
+			zoomControlOptions:{
+				position : naver.maps.Position.TOP_RIGHT,
+				style : naver.maps.ZoomControlStyle.SMALL //아이콘 작게
+			}
+		});
+		const marker = new naver.maps.Marker({
+			position : new naver.maps.LatLng(37.4505192, 126.6629272),
+			map : map
+		});
+		
+		let contentString = [
+			"<div class='iw-inner'>",
+			"	<p>인천광역시 미추홀구 인하로133번길 19-1 101호</p>",
+			"</div>"
+		].join("");
+		
+		let infoWindow = new naver.maps.InfoWindow();
+		//marker에 클릭이벤트 적용
+		naver.maps.Event.addListener(marker, "click", function(e){
+			infoWindow = new naver.maps.InfoWindow({
+				content : contentString
+			});
+			infoWindow.open(map,marker);
+		});
+	</script>
+	<th:block th:include="common/footer"></th:block>
+</body>
+</html>

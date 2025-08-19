@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트</title>
+    <script src="js/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>이벤트</h1>
+    <hr>
+    <h2>이벤트 연결 방식</h2>
+    <h3>jq 이벤트 연결 : dom객체.on("이벤트이름",function(){})</h3>
+    <div id="test1">
+        <div class="d1">이벤트 테스트1</div>
+        <div class="d2">이벤트 테스트2</div>
+    </div>
+    <button id="btn1">클릭</button>
+    <hr>
+    <h2>이벤트 강제실행(trigger)</h2>
+    <div class="levelup">
+        <div>
+            <button id="btn2" class="btn">레벨업</button>
+            <span>HTML : </span>
+            <span>1</span>
+        </div>
+        <div>
+            <button id="btn3" class="btn">레벨업</button>
+            <span>CSS : </span>
+            <span>1</span>
+        </div>
+        <div>
+            <button id="btn4" class="btn">레벨업</button>
+            <span>JAVASCRIPT : </span>
+            <span>1</span>
+        </div>
+        <div>
+            <button id="btn5" class="btn">레벨업</button>
+            <span>jquery-3 : </span>
+            <span>1</span>
+        </div>
+    </div>
+    <button id="btn6">전체 레벨업</button>
+    <script src="js/03_evant.js"></script>
+</body>
+</html>

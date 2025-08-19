@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>GIT TEST</h1>
+	<hr>
+	<p>수정이 잘되나요</p>
+	<p>수정</p>
+	<o>수정 잘됐어요</p>
+</body>
+</html>

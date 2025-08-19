@@ -1,0 +1,114 @@
+.bc{
+  width: 200px;
+  height: 200px;
+  border: 1px solid red;
+  display: inline-block;
+}
+.div1{
+  background-color: antiquewhite;
+}
+.div2{
+  background-color: blueviolet;
+}
+.div3{
+  width: 100px;
+  height: 100px;
+  border: 1px solid white;
+  /*배경색을 지정하지 않으면 기본 배경색은 투명한 색상*/
+  background-color: transparent;
+}
+
+.clip-wrap>div{
+  width: 200px;
+  height: 200px;
+  border: 5px dashed black;
+  background-color: antiquewhite;
+  padding: 20px;
+  float: left;
+  margin-right: 50px;
+}
+.clip-wrap{
+  overflow : hidden
+}
+.clip1{
+  background-clip: border-box;
+}
+.clip2{
+  background-clip: padding-box;
+}
+.clip3{
+  background-clip: content-box;
+}
+
+.bg-image{
+  background-image: url(../image/bg.jpg);
+  height: 500px;
+}
+
+.test-div{
+  width: 180px;
+  height: 100px;
+  margin: 30px;
+  border: 1px solid black;
+  float: left;
+  background-image: url(../image/kakao.jpg);
+}
+.repeat-wrap{
+  overflow: hidden;
+}
+.repeat1{
+  background-repeat: repeat;
+}
+.repeat2{
+  background-repeat: repeat-x;
+}
+.repeat3{
+  background-repeat: repeat-y;
+}
+.repeat4{
+  background-repeat: no-repeat;
+}
+
+.test-wrap>div{
+  background-repeat: no-repeat;
+}
+.test-wrap{
+  overflow: hidden;
+}
+.po1{
+  background-position: center bottom;
+}
+.po2{
+  background-position: right top;
+}
+.po3{
+  background-position: center center;
+}
+.po4{
+  background-position: 30% 70%;  /*비율로 해도 가능*/
+}
+
+.test-wrap{
+  overflow: hidden;
+}
+.test-wrap>div{
+  background-repeat: no-repeat;
+}
+.size1{
+  background-size: auto;
+}
+.size2{
+  background-size: contain;
+}
+.size3{
+  background-size: cover;
+}
+.size4{
+  background-size: 30%;
+}
+
+body{
+  background-image: url(../image/dora.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}

@@ -1,0 +1,40 @@
+package kr.co.iei.util;
+
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+public class LoginIntercepter implements HandlerInterceptor{
+	
+	//컨트롤러 호출 전에 실행되는 메소드
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
+		//컨트롤러 쪽으로 들어가는 요청을 가로챔
+		//리턴타입이 boolean
+		//true를 리턴하면 Controller 수행 o
+		//false를 리턴하면 Controller 수행 x
+		//로그인 여부를 체크해서 로그인이 되어있으면 Controller 수행
+		//로그인이 안되어있으면 로그인을 안내하는 페이지로 이동
+		HttpSession session = request.getSession();
+	}
+
+	@Override
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+			ModelAndView modelAndView) throws Exception {
+		// TODO Auto-generated method stub
+		HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
+	}
+	
+	//에러에 대한 부분
+	@Override
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
+			throws Exception {
+		// TODO Auto-generated method stub
+		HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
+	}
+	
+}

@@ -1,0 +1,95 @@
+.trans{
+  width: 250px;
+  height: 250px;
+}
+.trans1:hover{
+  transform: translateX(-100px);
+}
+.trans2:hover{
+  transform: translateY(100px);
+}
+.trans3:hover{
+  transform: translate(100px, 50px);
+}
+.trans4:hover{
+  transform: scaleX(2);
+}
+.trans5:hover{
+  transform: scaleY(2);
+}
+.trans6:hover{
+  transform: scale(2);
+}
+.trans7:hover{
+  transform: rotate(90deg);
+}
+.div{
+  width: 150px;
+  height: 150px;
+  border: 1px solid black;
+  background-color: red;
+}
+.trans8:hover{
+  width: 200px;
+  height: 200px;
+  background-color: blue;
+}
+.trans8{
+  transition-duration: 2s; /*입력한 시간에 걸쳐 변화시키는 기능 / 모든 css 속성에 작동되는건 아님*/
+}
+.trans9{
+  transition-duration: 3s; 
+}
+.trans9:hover{
+  background-color: green;
+  transform: rotate(45deg);
+  transition-delay: 2s;/*마우스를 올리고 지정한 시간만큼 지나야 작동되게 하는 기능*/
+}
+.img-box{
+  width: 300px;
+  height: 300px;
+  border: 3px solid black;
+  overflow: hidden;
+}
+.img-box>img{
+  width: 100%;
+  height: 100%;
+  transition-duration: 0.3s;
+  cursor: pointer; /*마우스 포인터 모양 바꿔주기*/
+}
+.img-box>img:hover{
+  transform: scale(1.1);
+}
+
+.img{
+  margin: 100px;
+  width: 300px;
+  height: 300px;
+  border: 3px solid red;
+  border-radius: 150px;
+
+  animation-name: ani1;
+  animation-duration: 0.9s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.img:hover{
+  
+}
+
+@keyframes ani1 {
+  from{
+    background-color: #ff0;
+  }
+  30%{
+    background-color: #0ff;
+  }
+  60%{
+    background-color: #0ff;
+  }
+  to{
+    background-color: #0f0;
+    transform: rotate(360deg);
+  }
+}

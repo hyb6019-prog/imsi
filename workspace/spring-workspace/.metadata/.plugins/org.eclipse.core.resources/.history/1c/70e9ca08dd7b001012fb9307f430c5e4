@@ -1,0 +1,14 @@
+package kr.co.iei;
+
+import org.springframework.boot.web.server.ConfigurableWebServerFactory;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
+
+public class WebServerCustom implements WebServerFactoryCustomizer<ConfigurableWebServerFactory>{
+
+	@Override
+	public void customize(ConfigurableWebServerFactory factory) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

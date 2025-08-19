@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>MAIN</title>
+</head>
+<body>
+	<h1>작성자로 조회</h1>
+	<hr>
+	<form action="/qna/searchWriter" method="get">
+		<label for="qnaWriter">작성자 입력 : </label> 
+		<input type="text" name="qnaWriter" id="qnaWriter"> 
+		<input type="submit" value="조회">
+	</form>
+</body>
+</html>

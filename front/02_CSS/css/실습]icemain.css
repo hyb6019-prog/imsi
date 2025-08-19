@@ -1,0 +1,178 @@
+/*
+#3D74B6
+#FBF5DE
+#EAC8A6
+#DC3C22
+*/
+:root{
+  --color1 : #3D74B6;
+  --color2 : #FBF5DE;
+  --color3 : #EAC8A6;
+  --color4 : #DC3C22;
+}
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  color: var(--color1);
+}
+.header{
+  position: fixed;
+  width: 100%;
+  background-color: white;
+}
+
+.header-top{
+  overflow: hidden;
+  margin: 0 auto;
+  width: 1200px;
+}
+.logo{
+  width: 300px;
+  float: left;
+  height: 100px;
+  
+}
+.logo>a{
+  font-size: 60px;
+  line-height: 100px;
+  font-weight: 900;
+  color: var(--color1);
+}
+.search-box{
+  width: 600px;
+  float: left;
+  height: 100px;
+  
+}
+.search-box>form{
+  text-align: center;
+  line-height: 100px;
+}
+.search-box>form>input{
+  width: 400px;
+  border: none;
+  border-bottom: 2px solid var(--color1);
+  font-size: 17px;
+}
+.search-box>form>button{
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.search-box>form>button>span{
+  color: var(--color1);
+}
+.link-box{
+  width: 300px;
+  float: left;
+  height: 100px;
+  text-align: right;
+}
+.link-box>a{
+  line-height: 100px;
+  margin-left: 25px;
+  font-weight: 900;
+  text-decoration: none;
+}
+.link-box>a:hover{
+  text-decoration: underline;
+  color: var(--color4);
+}
+.nav{
+  
+  background-color: var(--color1);
+}
+.nav>ul{
+  overflow: hidden;
+  list-style-type: none; /* 점 없애기 */
+  width: 1200px;
+  margin: 0 auto;
+}
+.nav>ul>li{
+  float: left;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+}
+.nav>ul>li>a{
+  text-decoration: none;
+  transition-duration: 0.3s; /* 입력 시간 이후 작동 기능 */ /*왜 호버에 넣지 않는가?*/
+  color: black;
+}
+.nav>ul>li>a:hover{
+  font-weight: 900;
+  color: white;
+}
+
+.footer{
+  background-color: var(--color2);
+}
+.footer>div{
+  width: 1200px;
+  margin: 0 auto;
+  padding: 30px 0px;
+}
+.footer>p{
+  padding: 5px 0px;
+  font-size: 14px;
+}
+/* header, footer 작업 끝 */
+.content{
+  width: 1200px;
+  margin: 0 auto;
+  padding-top: 140px;
+}
+.content-title>h3{
+  padding: 30px 0px;
+  text-align: center;
+}
+.product-list>ul{
+  list-style-type: none;
+  overflow: hidden;
+}
+.product-list>ul>li{
+  float: left;
+  padding: 20px;
+  width: calc(100% / 3); /* 3등분해서 적용 */
+  box-sizing: border-box;
+}
+.product-list>ul>li>a{
+  text-decoration: none;
+  display: block;
+  padding-bottom: 10px;
+}
+.product-list>ul>li>a:hover{
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,0.2);
+}
+.product-list>li>a>.img-box{
+  width: 90%;
+  margin: 0 auto;
+}
+.product-list>ul>li>a>.img-box>img{
+  width: 100%;
+}
+.product-list>ul>li>a>.img-box{
+  width: 70%;
+  margin: 0 auto;
+}
+.product-list>ul>li>a>.info{
+  padding: 10%;
+}
+.flavor{
+  font-size: 24px;
+  font-weight: bold;
+}
+.price{
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--color4);
+}
+.star{
+  overflow: hidden;
+}
+.star>span{
+  float: left;
+  color: gold;
+}

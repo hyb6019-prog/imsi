@@ -1,0 +1,53 @@
+.menu{
+  width: 260px;
+  margin: 100px;
+}
+.menu ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;  
+}
+.menu ul>li>a{
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  text-decoration: none;
+  font-size: 14px;
+  color : #fff;
+  box-sizing: border-box;
+  padding-left: 20px;
+  position: relative;
+}
+.sub-menu .sub-menu>li>a{
+  padding-left: 40px;
+}
+
+.main-menu>li>a{
+  background-color: #ed5565;
+  border-bottom: 1px solid #da4454;
+}
+.sub-menu>li>a{
+  background-color: #383838;
+  border-left: 10px solid #383838; /*조금 더 안쪽으로 온거 같은 효과*/
+}
+
+.main-menu>li>a:hover{
+  background-color: #da4454;
+}
+.sub-menu>li:hover>a{
+  border-color: #da4454;
+}
+.sub-menu{
+  display: none;
+}
+
+.more{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition-duration: 0.4s; /*.more에 주어야 .active가 제거되어도 작동됨*/
+}
+.active{
+  transform: rotate(90deg); /*해당 요소 각도 회전*/
+
+}

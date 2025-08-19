@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>메모수정</h3>
+	<hr>
+	<form action="/memo/memoUpdate" method="post">
+		<table border="1">
+			<tr>
+				<th>메모번호</th>
+				<td>
+					<span  th:text="${m.memoId}"></span>
+					<input type="hidden" name="memoId" th:value="${m.memoId}">
+				</td>
+			</tr>
+			<tr>
+				<th>제목</th>
+				<td>
+					<input type="text" name="memoTitle" th:value="${m.memoTitle}">
+				</td>
+			</tr>
+			<tr>
+				<th>작성자</th>
+				<td>
+					<input type="text" name="memoWriter" th:value="${m.memoWriter}" readonly>
+				</td>
+			</tr>
+			<tr>
+				<th>작성일</th>
+				<td>
+					<input type="text" name="writeDate" th:value="${m.writeDate}" readonly>
+				</td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td>
+					<textarea name="memoContent" th:text="${m.memoContent}" style="height: 100px; resize: none;"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" style="text-align:center;">
+					<input type="submit" value="수정">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

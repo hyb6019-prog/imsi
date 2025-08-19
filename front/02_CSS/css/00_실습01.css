@@ -1,0 +1,68 @@
+.login-wrap{
+  border: 1px solid black;
+  width: 1200px;
+  /* height: 150; */
+}
+.login-header{
+  /* height: 50px; */
+  /* background-color: burlywood; */
+  margin: 0px auto;
+}
+.login-content{
+  width: 1200px;
+  /* height: 100px;
+  background-color: antiquewhite; */
+  
+}
+.login-header{
+  text-align: center;
+}
+.login-header>h2{
+  padding: 0px 0px 15px 0px;
+  margin: 0px;
+  font-family: "바탕체";
+  font-size: 24px;
+}
+.login-header>h3{
+  padding: 0px 0px 30px 0px;
+  margin: 0px;
+  font-family: "고딕체";
+  font-size: 12px;
+  color: darkgoldenrod;
+}
+
+form{
+  width: 400px;
+  /* border: 0.1px solid black; */
+  position: relative;
+  overflow: hidden;
+}
+.input-box{
+  width: 270px;
+  /* height: 100px; */
+  /* background-color: antiquewhite; */
+  float: left;
+}
+.btn-box{
+  width: 130px;
+  height: 100px;
+  background-color: darkgoldenrod;
+  float: left;
+}
+
+.input-box>input:first-child{
+  width: 270px;
+  height: 45px;
+  /* padding: 0px 0px 5px 0px; */
+  margin: 0px 0px 5px 0px;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+.input-box>input:nth-child(2){
+  width: 270px;
+  height: 45px;
+  padding: 0px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin: 0px 0px 5px 0px;
+}

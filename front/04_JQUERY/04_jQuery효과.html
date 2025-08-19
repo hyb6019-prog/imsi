@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>효과</title>
+  <script src="js/jquery-3.7.1.js"></script>
+  <style>
+    #div{
+      width: 500px;
+      height: 300px;
+      border: 1px solid black;
+      background-color: tomato;
+    }
+  </style>
+</head>
+<body>
+  <h1>효과</h1>
+  <hr>
+  <h2>페이지에 애니메이션 효과를 만들기위한 함수</h2>
+  <h3>사용방법 : 객체.함수이름([speed],[easing],[callback]);</h3>
+  <p>speed : 실행속도(ms), easing : 변경되는 지점 별 속도, callback : 해당함수 실행 후 동작할 함수를 설정</p>
+  <p>easing옵션은 기본 jquery로는 사용이 불가능하고, jquery-ui라이브러리를 추가로 설치해야 사용 가능</p>
+  <button id="btn1">show</button>
+  <button id="btn2">hide</button>
+  <button id="btn3">toggle</button>
+
+  <button id="btn4">slideDown</button>
+  <button id="btn5">slideUp</button>
+  <button id="btn6">slideToggle</button>
+
+  <button id="btn7">fadeIn</button>
+  <button id="btn8">fadeOut</button>
+  <button id="btn9">fadeToggle</button>
+
+  <div id="div"></div>
+  <hr>
+  <h3>animate() : 현재 css속성을 설정속성으로 차츰 변경하는 효과를 주는 함수</h3>
+  <p>객체.animate([speed],[easing],[callback]);</p>
+  <p>esing 옵션은 jquery-ui를 추가로 설치해야 사용 가능</p>
+  <p>모든 css속성이 시간에 의한 변화가 일어나진 않음(jquery-ui를 추가로 설치하면 더 많은 속성변화가 가능)</p>
+  <button id="btn10">animate</button>
+
+
+
+
+  <script src="js/04.effect.js"></script>
+</body>
+</html>

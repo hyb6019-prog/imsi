@@ -1,0 +1,76 @@
+.ff1{
+  font-family: "궁서체";
+}
+.ff2{
+  font-family: "고딕체","궁서체","바탕체";
+}
+.ff3{
+  font-family: "없는글꼴1","없는글꼴2","없는글꼴3";
+}
+.webfont1{
+  font-family: "Gasoek One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+/*다운로드 한 폰트 적용*/
+/*1. 다운로드한 폰트 등록*/
+@font-face{
+  /*새로 등록하는 폰트 이름 지정*/
+  font-family: test_font;
+  /*폰트파일 경로*/
+  src: url(Dongle-Regular.ttf);
+}
+.webfont2{
+  font-family: test_font;
+}
+.size1{
+  font-size: 24px;
+}
+.size2{
+  font-size: 1.5em;
+  /*
+  em : 기본 크기의 배수
+  */
+}
+.fw1{
+  font-weight: normal;
+  /*
+  원래 두꺼운 글꼴을 변경할때 사용
+  font-weight : 400;
+  */
+}
+.fw2{
+  font-weight: lighter;
+  /*
+  기본 글꼴보다 얇게
+  font-weight : 200;
+  */
+}
+.fw3{
+  font-weight: bold;
+  /*font-weight : 600;*/
+}
+.fw4{
+  font-weight: bolder;
+  /*font-weight : 900;*/
+}
+.fv{
+  font-style: small-caps;
+}
+.fs1{
+  font-style: italic;
+}
+.fs2{
+  font-style: oblique; 
+}
+.f1{
+  /*
+  font-size: 20px
+  line-height: 50px
+  font-familly: "궁서체"
+  */
+  font : 20px/50px "궁서체";
+}
+.f2{
+  font : italic bold small-caps 20px/30px test_font
+}

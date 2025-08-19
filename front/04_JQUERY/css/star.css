@@ -1,0 +1,25 @@
+.star-wrap{
+  overflow: hidden;
+}
+.star-wrap>span{
+  float: left;
+  font-size: 30px;
+  color: lightgray;
+  cursor: pointer;
+}
+.star-wrap2{
+  position: relative;
+}
+
+.star-on{
+  position: absolute;
+  width: 0px;
+  overflow: hidden;
+}
+.star-on-wrap{
+  width: 150px;
+}
+.star-on-wrap>span{
+  color: gold;
+
+}

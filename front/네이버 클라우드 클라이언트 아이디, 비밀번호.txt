@@ -1,0 +1,5 @@
+client ID : iagv1ff1d5
+client secret : 6W7q3DJ5cK60hQoqGiCBdfgRUU1ojzVE7RfHCxWC
+
+채널키 : channel-key-925bc499-7e3a-4096-add4-a8926561d321
+고객사 식별코드 : imp27182461

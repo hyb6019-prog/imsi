@@ -1,0 +1,135 @@
+package kr.co.iei.etc.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
+import kr.co.iei.member.model.service.MemberService;
+import kr.co.iei.member.model.vo.Member;
+
+@Controller
+@RequestMapping(value="/etc")
+public class EtcController {
+	
+	@Autowired
+	private MemberService memberService;
+	
+	@GetMapping(value="/ajax")
+	public String ajax() {
+		return "etc/ajax";
+	}
+	
+	//비동기 요청을 처리하는 Controller는 HTML페이지를 되돌려주지 않음
+	//비동기 요청 Controller는 되돌려주고 싶은 데이터를 리턴타입으로 작성
+	//리턴을 그냥 작성하면 ViewResolver가 관여 -> HTML을 찾아가도록
+	// -> 이 컨트롤러는 비동기 요청을 처리하는 컨트롤러로 여기서 리턴하는 데이터를 그대로 클라이언트에게 전송해줘
+	@ResponseBody	//비동기 처리하는 컨트롤러 매소드의 어노테이션
+	@GetMapping(value="/ajax1")
+	public void ajax1() {
+		System.out.println("비동기로 서버 호출 시작");
+		try {
+			Thread.sleep(5000); //자바에게 5초동안 실행을 멈추게 하는 매소드
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("비동기로 서버 호출 끝");
+	}
+	
+	@ResponseBody
+	@GetMapping(value="ajax2")
+	public String ajax2() {
+		System.out.println("서버 호출 완료");
+		return "hi";
+	}
+	
+	@ResponseBody
+	@GetMapping(value="/ajax3")
+	public String ajax3(int su1, int num2) {	
+		int result = su1 + num2;
+		String resultString = String.valueOf(result);
+		return resultString;
+	}
+	
+	@ResponseBody
+	@GetMapping(value="/ajax4")
+	public String ajax4(String memberId) {
+		Member m = memberService.selectOneMember(memberId);
+		if(m != null) {
+			//조회 성공 시 화면에 회원정보를 리턴해줘야 script를 이용해서 화면에 출력가능
+			//회원정보를 Member타입으로 저장 -> Member타입은 JAVA의 객체 형태
+			//Member객체를 리턴해줘도 script는 해석 할 수 없음( -> JAVA언어로 작성된 객체이므로)
+			//서로다른 언어끼리 데이터를 주고받을때는 문자열 형식으로 주고 받음
+			//주고받는 문자열의 형식 지정해서 주고받음 -> XML, CSV, JSON.. 형식을 이용해서 처리
+			/*
+			 가지고 있는 회원정보를
+			 자바스크립트 객체 형식의 문자열로 변환해서 리턴
+			 {memberNo : 71, memberId : "user01", memberPw : "1111", memberName : "유저1"....}
+			 //GSON : 구글에서 만든 JSON을 처리하는 라이브러리
+			 
+			JsonObject obj = new JsonObject();//HashMap<String, Object> 형태와 유사한 객체
+			//회원번호, 아이디, 비밀번호, 이름, 전화번호, 주소, 등급, 가입일
+			obj.addProperty("memberNo", m.getMemberNo());
+			obj.addProperty("memberId", m.getMemberId());
+			obj.addProperty("memberPw", m.getMemberPw());
+			obj.addProperty("memberName", m.getMemberName());
+			obj.addProperty("memberPhone", m.getMemberPhone());
+			obj.addProperty("memberAddr", m.getMemberAddr());
+			obj.addProperty("memberLevel", m.getMemberLevel());
+			obj.addProperty("enrollDate", m.getEnrollDate());
+			String data = obj.toString();
+			System.out.println(data);
+			return data;
+			*/
+			Gson gson = new Gson();
+		}else {
+			return null;
+		}
+	}
+	
+	@ResponseBody
+	@GetMapping(value="/ajax5")
+	public String ajax5() {
+		List<Member> list = memberService.selectAllMember();
+		//자바의 리스트/배열 데이터를 자바스크립트 배열형태로 변환 -> 문자열로 변환 -> 전송
+		JsonArray resultArray = new JsonArray();//JSON을 여러개 저장하는 배열같은 객체
+		for(Member m : list) {
+			JsonObject obj = new JsonObject();//HashMap<String, Object> 형태와 유사한 객체
+			obj.addProperty("memberNo", m.getMemberNo());
+			obj.addProperty("memberId", m.getMemberId());
+			obj.addProperty("memberPw", m.getMemberPw());
+			obj.addProperty("memberName", m.getMemberName());
+			obj.addProperty("memberPhone", m.getMemberPhone());
+			obj.addProperty("memberAddr", m.getMemberAddr());
+			obj.addProperty("memberLevel", m.getMemberLevel());
+			obj.addProperty("enrollDate", m.getEnrollDate());
+			resultArray.add(obj);
+		}
+		String resultString = resultArray.toString();
+		System.out.println(resultString);
+		return resultString;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

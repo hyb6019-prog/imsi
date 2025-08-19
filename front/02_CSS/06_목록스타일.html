@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>목록스타일</title>
+  <link rel="stylesheet" href="css/list.css">
+</head>
+<body>
+  <h1>목록 스타일</h1>
+  <hr>
+  <h3>list-style-type : 목록 기호 설정</h3>
+  <pre>
+    ul : 선택자{list-style-type : disc | circle | square | none}
+    ol : 선택자{list-style-type : decimal-leading-zero | lower-roman | lower-alpha | upper-alpha}
+  </pre>
+  <ul class="ul">
+    <li>테스트1</li>
+    <li>테스트2</li>
+    <li>테스트3</li>
+  </ul>
+  <ol class="ol">
+    <li>테스트1</li>
+    <li>테스트2</li>
+    <li>테스트3</li>
+  </ol>
+  <h3>list-style-image : 기호 대신 이미지를 사용할때 사용하는 속성</h3>
+  <pre>선택자{list-style-image : url(이미지 경로);}</pre><!-- 10px 정도의 작은 이미지가 어울림-->
+  <ul class="ul1">
+    <li>테스트1</li>
+    <li>테스트2</li>
+    <li>테스트3</li>
+  </ul>
+  <hr>
+  <h3>list-style-position : 목록기호 들여쓰기 설정</h3>
+  <pre>선택자{list-style-position : inside | outside}</pre>
+  <ul class="ul2">
+    <li>테스트1</li>
+    <li>테스트2</li>
+    <li>테스트3</li>
+  </ul>
+  <ul class="ul3">
+    <li>테스트1</li>
+    <li>테스트2</li>
+    <li>테스트3</li>
+  </ul>
+</body>
+</html>

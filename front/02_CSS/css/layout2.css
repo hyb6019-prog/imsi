@@ -1,0 +1,147 @@
+.div{
+  width: 200px;
+  height: 200px;
+  background-color: antiquewhite;
+  display: inline-block;
+  border: 10px dashed black;
+  margin: 20px;
+  padding: 50px;
+}
+.d1{
+  box-sizing: content-box;
+}
+.d2{
+  box-sizing: border-box;
+}
+
+.outer{
+  background-color: antiquewhite;
+  position: relative;
+  height: 300px;
+  width: 1000px
+}
+.outer>div{
+  position: absolute;
+}
+.in1{
+  width: 300px;
+  height: 300px;
+  background-color: cadetblue;
+}
+.in2{
+  width: 200px;
+  height: 200px;
+  background-color: cornflowerblue;
+  top: 50px;
+  left: 50px;
+}
+.in3{
+  width: 100px;
+  height: 100px;
+  background-color: crimson;
+  top: 100px;
+  left: 100px;
+}
+#fixed{
+  width: 100px;
+  height: 100px;
+  background-color: darkgreen;
+  position: fixed;
+  top: 200px;
+  right: 100px;
+}
+.z-wrap{
+  position: relative;
+  height: 250px;
+  background-color: aqua;
+}
+.z-wrap>div{
+  position: absolute;
+  width: 150px;
+  height: 150px;
+} 
+.z-1{
+  background-color: red;
+  z-index: 2;
+}
+.z-2{
+  background-color: green;
+  top: 50px;
+  left: 50px;
+  z-index: 10000;
+}
+.z-3{
+  background-color: blue;
+  top: 100px;
+  left: 100px;
+  z-index: 3;
+}
+
+.vi>div{
+  width: 100px;
+  height: 100px;
+  border : 1px solid black;
+  background-color: red;
+}
+.vi1{
+  opacity: 0.5; /*요소 자체를 반투명하게 만드는거*/
+}
+.vi2{
+  visibility: hidden;
+}
+.v13{
+  background-color: rgba(255,0,0,0.5); /*색만 투명하게 만드는거*/
+}
+.vi>div>div{
+  width: 50px;
+  height: 50px;
+  background-color: blue;
+}
+
+.float>div{
+  width: 100px;
+  height: 30px;
+  border: 1px solid black;
+  
+  float: left; /*요소 사이 빈라인을 붙여줌*/
+}
+.float{
+  background-color: antiquewhite;
+}
+.clear{
+  clear: left;
+}
+
+.over{
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  margin-bottom: 200px;
+}
+.over1{
+  overflow-x: scroll; /* x혹은y는 한쪽 방향에만 스크롤을 만듬 */
+}
+.over2{
+  overflow: auto; /*컨텐츠가 넘치면 스크롤을 만듬*/
+}
+.over3{
+  overflow: hidden; /*컨텐츠가 넘치면 안보이게 만듬*/
+}
+.over4{
+  overflow: visible;  /*기본값, 작업 중 안보일경우 강제로 보이게 하는데 사용*/
+}
+
+.float-test{
+  background-color: bisque;
+  overflow: hidden;  /*자식에게 float를 줬다면 부모에게 오버플로우 히든값을 줘서 높이값을 할당해줌*/
+  width: 510px;
+}
+
+.float-test>div{
+  width: 100px;
+  height: 30px;
+  border : 1px solid black;
+  float: left;
+  
+}
+

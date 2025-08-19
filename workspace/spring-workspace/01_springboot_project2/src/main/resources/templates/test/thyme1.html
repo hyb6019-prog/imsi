@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>타임리프 기본형 데이터 출력</h1>
+	<hr>
+	<h3 th:text="${str}"></h3>
+	<!-- <h3><%=str %></h3> -->
+	<h3 th:text="${num1}"></h3>
+	<h3 th:text="${num2}">여기에 글씨가 있으면??</h3> <!-- 원래가 "여기에 글시가 ~"값이 있는 상태에서 $가 덮어씀 -->
+	<!-- 
+	<input type="text" name="test" value="<%=str %>">
+	 -->
+	 <input type="text" name="test" th:value="${str}" th:id="${str}">
+	 <h3 th:text="${num1+num2}"></h3>
+	 <h3 th:text="${num1} + ${num2}"></h3>
+	 <h3 th:text="${num1} + ${num2} + ${str}"></h3>  
+	 <h3 th:text="${num1} + ${str} + ${num2}"></h3>
+	 <h3 th:text="${num1} + ${str} + ${num2} + '이것도 더해질까'"></h3>
+</body>
+</html>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;jdbc_memo_model.vo.MemoJang&apos; to &apos;Memo&apos;&#x0D;&#x0A;- Original project: &apos;jdbc_memo&apos;&#x0D;&#x0A;- Original element: &apos;jdbc_memo_model.vo.MemoJang&apos;&#x0D;&#x0A;- Renamed element: &apos;jdbc_memo_model.vo.Memo&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;MemoJang&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;jdbc_memo_model.vo{MemoJang.java[MemoJang" matchStrategy="1" name="Memo" qualified="false" references="true" similarDeclarations="false" stamp="1751529157532" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,38 @@
+.wrap{
+  width : 900px;
+  margin : 0 auto;
+}
+.tab{
+  overflow: hidden;
+}
+.tab>div{
+  float: left;
+  width : calc(100%/4);
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background-color: #eee;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-left: none;
+  cursor: pointer;
+}
+.tab>.active-tab{
+  background-color: #fff;
+  border-bottom: none;
+  font-weight: 900;
+}
+.tab>div:first-child{
+  border-left: 1px solid black;
+}
+.tab-content{
+  padding: 25px;
+  border: 1px solid black;
+  border-top : none;
+}
+.tab-content>div{
+  display : none;
+}
+.tab-content>.active-content{
+  display: block;
+}

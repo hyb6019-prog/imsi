@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.pay-wrap{
+		width: 1000px;
+		margin: 0 auto;
+	}
+	.product-wrap{
+		display: flex;
+		justify-content: space-around;
+	}
+	.product-wrap>div{
+		width:450px;
+		height:300px;
+	}
+	.product-img>img{
+		width: 100%;
+		height: 100%;
+		object-fit : contain;
+	}
+</style>
+</head>
+<body>
+	<th:block th:include="common/header"></th:block>
+	<main class="content">
+		<section class="section pay-wrap">
+			<div class="page-title">상품판매</div>
+			<div class="product-wrap">
+				<div class="product-img">
+					<img src="/photo/dora.png">
+				</div>
+				<div class="product-info">
+					<table class="tbl">
+						<tr>
+							<td class="left" colspan="2">도라에몽</td>
+						</tr>
+						<tr>
+							<th style="width:30%">제조사</th>
+							<td>장난감회사</td>
+						</tr>
+						<tr>
+							<th>가격</th>
+							<td>
+								<span id="product-price">5000</span>
+								<span>원</span>
+							</td>
+						</tr>
+						<tr>
+							<th>주문수량</th>
+							<td>
+								<button class="btn-point sm minus">-</button>
+								<span id="product-amount">1</span>
+								<button class="btn-point sm plus">+</button>
+							</td>
+						</tr>
+						<tr>
+							<th>총 가격</th>
+							<td>
+							 <span id="total-price">5000</span>
+							 <span>원</span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<button id="buy-button" class="btn-primary">구매하기</button>
+								<button id="cart-button" class="btn-point">장바구니</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</section>
+	</main>
+	<script>
+		$(".plus").on("click", function(){
+			const productPrice = $("#product-price").text();
+			const productAmount = $("#product-amount").text();
+			
+			const newAmount = Number(productAmount) + 1;
+			const newTotalPrice = newAmount * productPrice;
+			$("#product-amount").text(newAmount);
+			$("#total-price").text(newTotalPrice);
+		});
+		$(".minus").on("click", function(){
+			const productPrice = $("#product-price").text();
+			const productAmount = $("#product-amount").text();
+			if(productAmount === "1") {
+				alert("최소 주문수량은 1개입니다.")
+				return;
+			}
+			const newAmount = Number(productAmount) - 1;
+			const newTotalPrice = newAmount * productPrice;
+			$("#product-amount").text(newAmount);
+			$("#total-price").text(newTotalPrice);
+		});
+		$("#buy-button").on("click", function(){
+			const price = $("#"total-price"").text();
+			constol.log("총 결제금액 : "+price);
+		});
+	</script>
+	<th:block th:include="common/footer"></th:block>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
